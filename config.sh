@@ -1,1 +1,1 @@
-
+disk="/dev/sda"
