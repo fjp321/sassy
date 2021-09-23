@@ -15,5 +15,9 @@ cd /mnt/gentoo
 #download read and store (into stage3location) where the latest stage 3 tarball for openrc is
 wget $gentoomirror/releases/amd64/autobuilds/latest-stage3-amd64-openrc.txt
 IFS=' ' read -r stage3location z <<< $(tail -n +3 latest-stage3-amd64-openrc.txt)
+IFS='/' read -r z stage3tarball <<< stage3location
 rm latest-stage3-amd64-openrc.txt
 wget $gentoomirror/releases/amd64/autobuilds/$stage3location
+tar xvpf $stage3tarball
+sed -i 's/COMMON_FLAGS="-O2 -pipe"/COMMON_FLAGS="-O2 -pipe = -march=native"/' etc/portage/make.conf
+echo MAKEOPTS=\"-j3\"
