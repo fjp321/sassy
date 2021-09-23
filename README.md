@@ -12,4 +12,6 @@ This script is like the wild west, there are **no safety checks**. I highly enco
 ### 2
 This script will create an **openrc** system, no systemd here.
 ### 3 
-This script is for amd64 processors.
+This script is for **amd64** processors.
+## Todo
+- [ ] Update install script to exit on bad stage 3 checksum
