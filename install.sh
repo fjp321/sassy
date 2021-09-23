@@ -8,3 +8,6 @@ swapon /dev/sda2
 
 #mount root
 mount /dev/sda3 /mnt/gentoo
+
+#change directory into mounted gentoo
+cd /mnt/gentoo
