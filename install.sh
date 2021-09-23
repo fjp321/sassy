@@ -39,6 +39,6 @@ mount --make-rslave /mnt/gentoo/sys
 mount --rbind /dev /mnt/gentoo/dev
 mount --make-rslave /mnt/gentoo/dev
 
-#change root
+#download next scripts into /mnt/gentoo/
 wget https://raw.github.com/fjp321/fuzzy-goggles/main/install2.sh
-chroot /mnt/gentoo /bin/bash
+wget https://raw.github.com/fjp321/fuzzy-goggles/main/install2.sh
