@@ -17,6 +17,10 @@ Then run
 `chmod 777 install.sh config.sh`
 
 to give full permission to the scripts. If this isn't okay with you, the user, then assign permissions as you deem fit. However, lack of executable permission will break things. 
+## First
+Make sure config.sh is correct, then run
+
+`bash install.sh`
 ## Next
 After install bash is finished, you, the user, will need to change root to /mnt/gentoo. The commands are as follows:
 
