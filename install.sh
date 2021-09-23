@@ -40,13 +40,5 @@ mount --rbind /dev /mnt/gentoo/dev
 mount --make-rslave /mnt/gentoo/dev
 
 #change root
+wget https://raw.github.com/fjp321/fuzzy-goggles/main/install2.sh
 chroot /mnt/gentoo /bin/bash
-source /etc/profile
-export PS1="(chroot) ${PS1}"
-
-#mount boot partition
-mount /dev/sda1 /boot
-
-#install a snapshot of the Gentoo ebuild repository
-emerge-webrsync
-emerge --sync
