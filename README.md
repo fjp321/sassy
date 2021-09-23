@@ -11,3 +11,5 @@ Then run 'chmod 777 install.sh config.sh' to give full permission to the scripts
 This script is like the wild west, there are **no safety checks**. I highly encourage you, the user, to at least peruse throught the install script and config files to make sure things won't break.
 ### 2
 This script will create an **openrc** system, no systemd here.
+### 3 
+This script is for amd64 processors.
