@@ -11,3 +11,9 @@ mount /dev/sda3 /mnt/gentoo
 
 #change directory into mounted gentoo
 cd /mnt/gentoo
+
+#download read and store (into stage3location) where the latest stage 3 tarball for openrc is
+wget $gentoomirror/releases/amd64/autobuilds/latest-stage3-amd64-openrc.txt
+IFS=' ' read -r stage3location z <<< $(tail -n +3 latest-stage3-amd64-openrc.txt)
+rm latest-stage3-amd64-openrc.txt
+wget $gentoomirror/releases/amd64/autobuilds/$stage3location
