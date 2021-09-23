@@ -17,6 +17,19 @@ Then run
 `chmod 777 install.sh config.sh`
 
 to give full permission to the scripts. If this isn't okay with you, the user, then assign permissions as you deem fit. However, lack of executable permission will break things. 
+## Next
+After install bash is finished, you, the user, will need to change root to /mnt/gentoo. THe commands are as follows:
+
+`chroot /mnt/gentoo /bin/bash
+source /etc/profile
+export PS1="(chroot) ${PS1}"`
+
+Then run 
+
+`bash install2.sh` 
+
+to continue.
+
 ## Important Note
 ### No Safety Checks
 This script is like the wild west, there are **no safety checks**. I highly encourage you, the user, to at least peruse throught the install scripts and config files to make sure things won't break.
