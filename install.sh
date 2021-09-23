@@ -1,13 +1,13 @@
 source config.sh
 
 #make filesystems and swap
-mkfs.vfat -F 32 /dev/sda1
-mkfs.ext4 /dev/sda3
-mkswap /dev/sda2
-swapon /dev/sda2
+mkfs.vfat -F 32 $disk1
+mkfs.ext4 $disk3
+mkswap $disk2
+swapon $disk2
 
 #mount root
-mount /dev/sda3 /mnt/gentoo
+mount $disk3 /mnt/gentoo
 
 #change directory into mounted gentoo
 cd /mnt/gentoo
