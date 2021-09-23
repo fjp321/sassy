@@ -18,10 +18,12 @@ Then run
 
 to give full permission to the scripts. If this isn't okay with you, the user, then assign permissions as you deem fit. However, lack of executable permission will break things. 
 ## Next
-After install bash is finished, you, the user, will need to change root to /mnt/gentoo. THe commands are as follows:
+After install bash is finished, you, the user, will need to change root to /mnt/gentoo. The commands are as follows:
 
 `chroot /mnt/gentoo /bin/bash
+
 source /etc/profile
+
 export PS1="(chroot) ${PS1}"`
 
 Then run 
