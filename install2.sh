@@ -7,4 +7,3 @@ export PS1="(chroot) ${PS1}"
 mount ${disk}1 /boot
 emerge-webrsync
 emerge --sync
-eselect news read
