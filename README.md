@@ -18,11 +18,11 @@ Then run
 
 to give full permission to the scripts. If this isn't okay with you, the user, then assign permissions as you deem fit. However, lack of executable permission will break things. 
 ## Important Note
-### 1
+### No Safety Checks
 This script is like the wild west, there are **no safety checks**. I highly encourage you, the user, to at least peruse throught the install script and config files to make sure things won't break.
-### 2
+### Openrc
 This script will create an **openrc** system, no systemd here.
-### 3 
+### AMD64 
 This script is for **amd64** processors.
 ## Todo
 - [ ] Update install script to exit on bad stage 3 checksum
