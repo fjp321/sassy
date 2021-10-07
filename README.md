@@ -6,11 +6,11 @@ Next, partition the drive for a uefi system. I like to use [fdisk](https://wiki.
 ## Download
 Run 
 
-`wget https://raw.github.com/fjp321/main/install.sh`
+`wget https://raw.github.com/fjp321/fuzzy-goggles/main/install.sh`
 
 and 
 
-`wget https://raw.github.com/fjp321/main/config.sh`
+`wget https://raw.github.com/fjp321/fuzzy-goggles/main/config.sh`
 
 Then run 
 
