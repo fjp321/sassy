@@ -26,7 +26,7 @@ wget $gentoomirror/releases/amd64/autobuilds/$stage3location
 tar xpvf $stage3tarball --xattrs-include='*.*' --numeric-owner
 
 #add options to make conf file
-sed -i 's/COMMON_FLAGS="-O2 -pipe"/COMMON_FLAGS="-O2 -pipe = -march=native"/' etc/portage/make.conf
+sed -i 's/COMMON_FLAGS="-O2 -pipe"/COMMON_FLAGS="-O2 -pipe -march=native"/' etc/portage/make.conf
 echo MAKEOPTS=\"$mkopts\" >> etc/portage/make.conf
 echo GENTOO_MIRRORS=\"$gentoomirror/\" >> etc/portage/make.conf
 
