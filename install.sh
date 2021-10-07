@@ -7,6 +7,9 @@ mkswap ${disk}2
 swapon ${disk}2
 
 #mount root
+# change time
+ntpd -q -g
+
 mount ${disk} /mnt/gentoo
 
 #change directory into mounted gentoo
