@@ -23,7 +23,7 @@ rm latest-stage3-amd64-openrc.txt
 wget $gentoomirror/releases/amd64/autobuilds/$stage3location
 
 #unzip tar ball
-tar xpvf $stage3tarball
+tar xpvf $stage3tarball --xattrs-include='*.*' --numeric-owner
 
 #add options to make conf file
 sed -i 's/COMMON_FLAGS="-O2 -pipe"/COMMON_FLAGS="-O2 -pipe = -march=native"/' etc/portage/make.conf
