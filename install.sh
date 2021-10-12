@@ -10,7 +10,7 @@ swapon ${disk}2
 # change time
 ntpd -q -g
 
-mount ${disk} /mnt/gentoo
+mount ${disk}3 /mnt/gentoo
 
 #change directory into mounted gentoo
 cd /mnt/gentoo
