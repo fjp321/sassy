@@ -6,4 +6,4 @@ emerge-webrsync
 emerge --sync
 eselect profile set 5
 USE="-X -cairo -glib -graphite -harfbuzz -icu -introspection -png -truetype" emerge media-libs/freetype media-libs/harfbuzz
-emerge --verbose --update --deep --changed-use --autounmask=y @world
+emerge --verbose --update --deep --changed-use --autounmask-write=y @world
