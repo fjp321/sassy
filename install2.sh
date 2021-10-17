@@ -1,7 +1,7 @@
 source config.sh
 
 #mount to boot
-mount ${disk}1 /boot
+mount ${bootpar} /boot
 #update bins
 emerge-webrsync
 emerge --sync
