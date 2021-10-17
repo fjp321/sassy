@@ -1,26 +1,5 @@
-useflags="X 
-alsa 
-branding
-capi clang cups custom-cflags 
-debug dbus dos 
-eme-free 
-faudio fontconfig 
-gecko geckodriver gphoto2 gmp-autoupdate gsm gssapi gstreamer 
-hardened hwaccel 
-imlib
-jack jpeg 
-kerberos 
-lcms ldap lto 
-mingw mono mono mp3 
-netapi nls 
-odbc openal opencl opengl openh264 osmesa oss 
-pcap perl pgo png prelink pulseaudio 
-realtime 
-tun-exes 
-samba scanner screencast sdl selinux session sndio ssl startup-notification system-av1 system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-webp svg
-test threads truetype tun-exes 
-udev udisks unwind usb 
-v4l vkd3d vulkan 
-wayland wifi 
-xcomposite xdg xinerama xml"
-# useflags for things like x11, openbox, firefox, wine
+useflags="x11-wm/openbox www-client/firefox app-emulation/wine-vanilla x11-drivers/xf86-video-amdgpu 
+games-util/steam-meta sys-kernel/linux-firmware dev-vcs/git sci-mathematics/octave x11-misc/dunst 
+x11-misc/polybar x11-misc/dmenu x11-misc/sddm app-editors/vim net-libs/nodejs net-wireless/gnuradio
+net-analyzer/wireshark net-misc/icaclient"
+# useflags for things like x11, dmenu, sddm, vim, nodejs, gnuradio, wireshark, icaclient 
