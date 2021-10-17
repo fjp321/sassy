@@ -1,16 +1,16 @@
 source config.sh
 
 #make filesystems and swap
-mkfs.vfat -F 32 ${disk}1
-mkfs.ext4 ${disk}3
-mkswap ${disk}2
-swapon ${disk}2
+mkfs.vfat -F 32 ${bootpar}
+mkfs.ext4 ${rootpar}
+mkswap ${swappar}
+swapon ${swappar}
 
 #mount root
 # change time
 ntpd -q -g
 
-mount ${disk}3 /mnt/gentoo
+mount ${rootpar} /mnt/gentoo
 
 #change directory into mounted gentoo
 cd /mnt/gentoo
