@@ -5,8 +5,6 @@ mount ${bootpar} /boot
 #update bins
 emerge-webrsync
 emerge --sync
-#set profile to desktop
-eselect profile set 5
 #fix circ deps
 USE="abi_x86_32" emerge -v1 sys-libs/zlib
 USE="-* abi_x86_32" emerge --verbose --oneshot --nodeps media-libs/harfbuzz
