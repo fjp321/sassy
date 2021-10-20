@@ -30,7 +30,7 @@ sed -i 's/COMMON_FLAGS="-O2 -pipe"/COMMON_FLAGS="-O2 -pipe -march=native"/' etc/
 echo MAKEOPTS=\"$mkopts\" >> etc/portage/make.conf
 echo GENTOO_MIRRORS=\"$gentoomirror/\" >> etc/portage/make.conf
 echo VIDEO_CARDS=\"amdgpu radeonsi\" >> etc/portage/make.conf
-echo USE=\"${use_flags}\" >> etc/portage/make.conf
+echo USE=\"-gnome -kde -dvd\" >> etc/portage/make.conf
 
 #add repos conf to portage
 mkdir --parents /mnt/gentoo/etc/portage/repos.conf
