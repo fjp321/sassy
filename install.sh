@@ -27,10 +27,10 @@ tar xpvf $stage3tarball --xattrs-include='*.*' --numeric-owner
 
 #add options to make conf file
 sed -i 's/COMMON_FLAGS="-O2 -pipe"/COMMON_FLAGS="-O2 -pipe -march=native"/' etc/portage/make.conf
-echo MAKEOPTS=\"$mkopts\" >> etc/portage/make.conf
-echo GENTOO_MIRRORS=\"$gentoomirror/\" >> etc/portage/make.conf
-echo VIDEO_CARDS=\"amdgpu radeonsi\" >> etc/portage/make.conf
-echo USE=\"-gnome -kde -dvd\" >> etc/portage/make.conf
+echo -e MAKEOPTS=\"$mkopts\" >> etc/portage/make.conf
+echo -e GENTOO_MIRRORS=\"$gentoomirror/\" >> etc/portage/make.conf
+echo -e VIDEO_CARDS=\"amdgpu radeonsi\" >> etc/portage/make.conf
+echo -e USE=\"-gnome -kde -dvd\" >> etc/portage/make.conf
 
 #add repos conf to portage
 mkdir --parents /mnt/gentoo/etc/portage/repos.conf
