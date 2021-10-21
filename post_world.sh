@@ -14,7 +14,7 @@ echo -e "${bootpar}\t/boot\text4\tdefaults,noatime\t0 2" >> /etc/fstab
 genkernel all
 emerge --autounmask-write=y --autounmask-continue=y sys-kernel/linux-firmware
 echo -e "${swappar}\tnone\tswap\tsw\t0 0" >> /etc/fstab
-echo -e "${rootpar}\t/\text4\tnoatime\t0 1" >> /etc/fstab
+echo -e "${rootpar}\t/\text4\trw,noatime\t0 1" >> /etc/fstab
 sed -i 's/hostname="localhost"/hostname="bristlecone"/' /etc/conf.d/hostname
 emerge --autounmask-write=y --autounmask-continue=y app-admin/sysklogd sys-process/cronie sys-apps/mlocate sys-fs/e2fsprogs sys-fs/dosftools net-misc/dhcpcd net-wireless/iw net-wireless/wpa_supplicant
 rc-update add sysklogd default
