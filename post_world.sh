@@ -1,4 +1,4 @@
-
+source config.sh
 echo -e ACCEPT_LICENSE=\"*\" >> /etc/portage/make.conf
 echo America/New_York > /etc/timezone
 emerge --config sys-libs/timezone-data
