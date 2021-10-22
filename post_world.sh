@@ -23,7 +23,7 @@ emerge --autounmask-write=y --autounmask-continue=y sys-fs/e2fsprogs
 emerge --autounmask-write=y --autounmask-continue=y sys-fs/dosftools 
 emerge --autounmask-write=y --autounmask-continue=y net-misc/dhcpcd 
 emerge --autounmask-write=y --autounmask-continue=y net-wireless/iw 
-emerge --autounmask-write=y --autounmask-continue=y exitnet-wireless/wpa_supplicant
+emerge --autounmask-write=y --autounmask-continue=y net-wireless/wpa_supplicant
 rc-update add sysklogd default
 rc-update add cronie default
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
