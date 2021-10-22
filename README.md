@@ -36,6 +36,22 @@ Then run
 
 to continue.
 
+After install2.sh is finished, enter root passwd, and exit and unmount using
+
+`umount -l /mnt/gentoo/dev{/shm,/pts,}`
+
+`umount -R /mnt/gentoo` 
+
+then reboot.
+
+## Graphics setup
+
+Run 
+
+`wget https://raw.github.com/fjp321/fuzzy-goggles/main/gui.sh`
+
+to get the bash script to emerge the packages for the gui that I use and to download the configs from the dotfiles folder.
+
 ## Important Note
 ### No Safety Checks
 This script is like the wild west, there are **no safety checks**. I highly encourage you, the user, to at least peruse throught the install scripts and config files to make sure things won't break.
