@@ -3,6 +3,7 @@ useradd -m -G users,wheel,audio -s /bin/bash fjp
 passwd fjp
 rm /stage3* /install2.sh /config.sh
 emerge --autounmask-write=y --autounmask-continue=y vim
+emerge --autounmask-write=y --autounmask-continue=y polybar
 emerge --autounmask-write=y --autounmask-continue=y x11-base/xorg-drivers
 env-update
 source /etc/profile
