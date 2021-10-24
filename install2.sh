@@ -13,7 +13,7 @@ USE="-* abi_x86_32" emerge --verbose --oneshot --nodeps media-libs/freetype
 USE="-* truetype harfbuzz abi_x86_32" emerge --verbose --oneshot media-libs/freetype
 emerge --verbose --oneshot media-libs/freetype
 #update world
-emerge --verbose --update --deep --changed-use @world
+emerge --verbose --update --deep --changed-use --autounmask-write=y --autounmask-continue=y @world
 #set accept license to all
 echo -e ACCEPT_LICENSE=\"*\" >> /etc/portage/make.conf
 #set timezone to newyork, america
@@ -26,9 +26,9 @@ locale-gen
 eselect locale set 6
 env-update && source /etc/profile
 #genkernel
-emerge sys-kernel/gentoo-sources
+emerge --autounmask-write=y --autounmask-continue=y sys-kernel/gentoo-sources
 eselect kernel set 1
-emerge sys-kernel/genkernel
+emerge --autounmask-write=y --autounmask-continue=y sys-kernel/genkernel
 #setup stab
 echo -e "${bootpar}\t/boot\text4\tdefaults,noatime\t0 2" >> /etc/fstab
 genkernel all
@@ -39,19 +39,19 @@ echo -e "${rootpar}\t/\text4\trw,noatime\t0 1" >> /etc/fstab
 #set host name
 sed -i 's/hostname="localhost"/hostname="bristlecone"/' /etc/conf.d/hostname
 #emerge system logger
-emerge app-admin/sysklogd 
+emerge --autounmask-write=y --autounmask-continue=y app-admin/sysklogd 
 #emerge cron daemon
-emerge sys-process/dcron
+emerge --autounmask-write=y --autounmask-continue=y sys-process/dcron
 #emerge mlocate for file indexing
-emerge sys-apps/mlocate 
+emerge --autounmask-write=y --autounmask-continue=y sys-apps/mlocate 
 # emerge fs tools 
-emerge sys-fs/e2fsprogs 
-emerge sys-fs/dosftools 
+emerge --autounmask-write=y --autounmask-continue=y sys-fs/e2fsprogs 
+emerge --autounmask-write=y --autounmask-continue=y sys-fs/dosftools 
 #emerge dhcpd to get internet and ip assignment
-emerge net-misc/dhcpcd 
+emerge --autounmask-write=y --autounmask-continue=y net-misc/dhcpcd 
 #emerge wireless internet tools
-emerge net-wireless/iw 
-emerge net-wireless/wpa_supplicant
+emerge --autounmask-write=y --autounmask-continue=y net-wireless/iw 
+emerge --autounmask-write=y --autounmask-continue=y net-wireless/wpa_supplicant
 #add tools to rc
 rc-update add sysklogd default
 rc-update add dcron default
