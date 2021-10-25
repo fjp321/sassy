@@ -7,7 +7,7 @@ emerge-webrsync
 emerge --sync
 eselect profile set 5
 #fix circ deps
-USE="-harfbuzz" emerge -qv --oneshot media-libs/freetype media-libs/harfbuzz =x11-libs/pango-1.48.5-r1
+USE="-harfbuzz" emerge --autounmask-write=y --autounmask-continue=y --oneshot media-libs/freetype
 #update world
 emerge -qv --ask --update --deep --changed-use --autounmask-write=y --autounmask-continue=y @world
 #set accept license to all
