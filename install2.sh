@@ -9,7 +9,7 @@ eselect profile set 5
 #fix circ deps
 USE="-harfbuzz" emerge -qv --oneshot media-libs/freetype media-libs/harfbuzz =x11-libs/pango-1.48.5-r1
 #update world
-emerge -qv --update --deep --changed-use --autounmask-write=y --autounmask-continue=y @world
+emerge -qv --ask --update --deep --changed-use --autounmask-write=y --autounmask-continue=y @world
 #set accept license to all
 echo -e ACCEPT_LICENSE=\"*\" >> /etc/portage/make.conf
 #set timezone to newyork, america
