@@ -11,7 +11,7 @@ source /etc/profile
 emerge -qv --autounmask-write=y --autounmask-continue=y media-fonts/liberation-fonts
 
 # display manager
-emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/slim
+emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/lightdm
 #window manager
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-wm/openbox
 emerge -qv --autounmask-write=y --autounmask-continue=y menumaker
