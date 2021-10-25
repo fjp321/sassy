@@ -35,18 +35,18 @@ echo -e "${rootpar}\t/\text4\trw,noatime\t0 1" >> /etc/fstab
 #set host name
 sed -i 's/hostname="localhost"/hostname="bristlecone"/' /etc/conf.d/hostname
 #emerge system logger
-emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sysklogd 
+emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sysklogd
 #emerge cron daemon
 emerge -qv --autounmask-write=y --autounmask-continue=y sys-process/dcron
 #emerge mlocate for file indexing
-emerge -qv --autounmask-write=y --autounmask-continue=y sys-apps/mlocate 
+emerge -qv --autounmask-write=y --autounmask-continue=y sys-apps/mlocate
 # emerge fs tools 
-emerge -qv --autounmask-write=y --autounmask-continue=y sys-fs/e2fsprogs 
-emerge -qv --autounmask-write=y --autounmask-continue=y sys-fs/dosftools 
+emerge -qv --autounmask-write=y --autounmask-continue=y sys-fs/e2fsprogs
+emerge -qv --autounmask-write=y --autounmask-continue=y sys-fs/dosftools
 #emerge dhcpd to get internet and ip assignment
-emerge -qv --autounmask-write=y --autounmask-continue=y net-misc/dhcpcd 
+emerge -qv --autounmask-write=y --autounmask-continue=y net-misc/dhcpcd
 #emerge wireless internet tools
-emerge -qv --autounmask-write=y --autounmask-continue=y net-wireless/iw 
+emerge -qv --autounmask-write=y --autounmask-continue=y net-wireless/iw
 emerge -qv --autounmask-write=y --autounmask-continue=y net-wireless/wpa_supplicant
 #add tools to rc
 rc-update add sysklogd default
