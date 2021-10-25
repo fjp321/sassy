@@ -1,5 +1,5 @@
 useradd -m -G users,wheel,audio -s /bin/bash fjp
-passwd fjp
+passwd ${main_user}
 rm /stage3* /install2.sh /config.sh
 
 #xorg
@@ -18,13 +18,14 @@ emerge -qv --autounmask-write=y --autounmask-continue=y x11-wm/openbox
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/menumaker
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/obconf
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-plugins/docker
-emerge -qv --autounmask-write=y --autounmask-continue=y lxde-base/lxsession
+emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sudo
+echo '' >>
 
 # terminal emulator 
-emerge -qv --autounmask-write=y --autounmask-continue=y x11-terms/kitty
+emerge -qv --autounmask-write=y --autounmask-continue=y x11-terms/terminator
 
 # file manager thunar
-emerge -qv --autounmask-write=y --autounmask-continue=y xfce-base/thunar xfce-extra/tumbler
+emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/spacefm
 
 # word editor
 emerge -qv --autounmask-write=y --autounmask-continue=y app-office/abiword
