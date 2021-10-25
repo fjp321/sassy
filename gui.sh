@@ -1,8 +1,8 @@
 useradd -m -G users,wheel,audio -s /bin/bash fjp
 passwd fjp
 rm /stage3* /install2.sh /config.sh
-# base lxqt base
-emerge --autounmask-write=y --autounmask-continue=y lxqt-base/lxqt-meta
+# base xfce base
+emerge --autounmask-write=y --autounmask-continue=y xfce-base/xfce4-meta
 # terminal emulator 
 emerge --autounmask-write=y --autounmask-continue=y x11-terms/kitty
 # file manager thunar
