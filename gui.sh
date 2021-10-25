@@ -12,10 +12,11 @@ emerge -qv --autounmask-write=y --autounmask-continue=y media-fonts/liberation-f
 
 # display manager
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/lightdm
+
 #window manager
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-wm/openbox
-emerge -qv --autounmask-write=y --autounmask-continue=y menumaker
-emerge -qv --autounmask-write=y --autounmask-continue=y obconf
+emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/menumaker
+emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/obconf
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-plugins/docker
 emerge -qv --autounmask-write=y --autounmask-continue=y lxde-base/lxsession
 
