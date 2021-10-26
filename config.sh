@@ -1,7 +1,7 @@
-disk="/dev/sda" #pre partition i.e. sda*, nvme0n1p*
-bootpar="/dev/sda1"
-swappar="/dev/sda2"
-rootpar="/dev/sda3"
+disk="/dev/nvme0n1" #pre partition i.e. sda*, nvme0n1p*
+bootpar="/dev/nvme0n1p1"
+swappar="/dev/nvme0n1p2"
+rootpar="/dev/nvme0n1p3"
 gentoomirror="https://mirrors.rit.edu/gentoo"
-mkopts="-j4"
-useflags_var="X gtk kde gnome qt5 bluetooth -dvd -cdr"
+mkopts="-j6"
+useflags_var="X gtk gnome vulkan bluetooth -dvd -cdr"
