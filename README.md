@@ -50,7 +50,7 @@ Run
 
 `wget https://raw.github.com/fjp321/fuzzy-goggles/main/gui.sh`
 
-to get the bash script to emerge the packages for the gui that I use and to download the configs from the dotfiles folder.
+to get the bash script to emerge the packages for the gui that I use as well as edit config to how I use them.
 
 ## Important Note
 ### No Safety Checks
@@ -64,3 +64,4 @@ This script assumes [amd gpus](https://wiki.gentoo.org/wiki/AMDGPU#USE_flags). C
 ## Todo
 - [ ] Update install.sh to exit on bad stage 3 checksum
 - [ ] Update install.sh to have arg for not including amd video card support
+- [ ] Update gui.sh to use dotfiles
