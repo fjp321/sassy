@@ -19,13 +19,18 @@ emerge -qv --autounmask-write=y --autounmask-continue=y x11-wm/openbox
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/menumaker
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/obconf
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-plugins/docker
+
+#sudo
 emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sudo
-echo '' >>
+echo 'fjp bristlecone /usr/bin/*' >> /etc/sudoers
+
+#vim
+emerge -qv --autounmask-write=y --autounmask-continue=y app-editors/vim
 
 # terminal emulator 
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-terms/terminator
 
-# file manager thunar
+# file manager spacefm
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/spacefm
 
 # word editor
@@ -37,8 +42,11 @@ emerge -qv --autounmask-write=y --autounmask-continue=y  x11-misc/polybar
 #chat client (add discord support)
 emerge -qv --autounmask-write=y --autounmask-continue=y  net-im/pidgin
 
-#firefox
-emerge -qv --autounmask-write=y --autounmask-continue=y www-client/firefox www-client/firefox-bin
+#falkon
+emerge -qv --autounmask-write=y --autounmask-continue=y www-client/falkon
 
-#Non root xorg needed (https://wiki.gentoo.org/wiki/Non_root_Xorg)
+#wine
+emerge -qv --autounmask-write=y --autounmask-continue=y virtual/wine
 
+#lutris
+emerge -qv --autounmask-write=y --autounmask-continue=y games-util/lutris
