@@ -4,6 +4,9 @@ passwd ${main_user}
 rm /stage3* /install2.sh /config.sh
 
 #xorg
+emerge -qv --autounmask-write=y --autounmask-continue=y x11-base/xorg-drivers
+emerge -qv --autounmask-write=y --autounmask-continue=y media-libs/mesa
+emerge -qv --autounmask-write=y --autounmask-continue=y media-libs/vulkan-loader
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-base/xorg-server
 env-update
 source /etc/profile
