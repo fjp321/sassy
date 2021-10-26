@@ -1,5 +1,5 @@
 main_user=fjp
-useradd -m -G users,wheel,audio -s /bin/bash ${main_user}
+useradd -m -G users,wheel,audio,video -s /bin/bash ${main_user}
 passwd ${main_user}
 rm /stage3* /install2.sh /config.sh
 
