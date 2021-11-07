@@ -1,3 +1,5 @@
+#!/bin/bash
+source /etc/profile
 source config.sh
 
 #mount to boot
