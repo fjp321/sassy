@@ -22,19 +22,6 @@ Make sure config.sh is correct, then run
 
 `bash install.sh`
 ## Next
-After install bash is finished, you, the user, will need to change root to /mnt/gentoo. The commands are as follows:
-
-`chroot /mnt/gentoo /bin/bash`
-
-`source /etc/profile`
-
-`export PS1="(chroot) ${PS1}"`
-
-Then run 
-
-`bash install2.sh` 
-
-to continue.
 
 After install2.sh is finished, enter root passwd, and exit and unmount using
 
@@ -64,4 +51,6 @@ This script assumes [amd gpus](https://wiki.gentoo.org/wiki/AMDGPU#USE_flags). C
 ## Todo
 - [ ] Update install.sh to exit on bad stage 3 checksum
 - [ ] Update install.sh to have arg for not including amd video card support
+- [ ] Add custom kernel support rather than genkernel all
 - [ ] Update gui.sh to use dotfiles
+- [ ] Create fork that works for arm processors (raspberry pis)
