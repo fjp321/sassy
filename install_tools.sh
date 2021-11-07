@@ -6,10 +6,17 @@ emerge --autounmask-write=y --autounmask-continue=y dev-vcs/git
 emerge --autounmask-write=y --autounmask-continue=y virtual/wine
 #install lutris
 
-#setup vim
+#setup neo vim
 
 #setup kitty
 
 #setup polybar
 
 #download zaffiro icons
+
+#get rust tools
+
+#get lua tools
+
+#get sadge
+
