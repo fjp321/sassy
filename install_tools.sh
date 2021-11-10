@@ -1,3 +1,4 @@
+# as non root
 #emerge octave
 emerge --autounmask-write=y --autounmask-continue=y sci-mathematics/octave
 #emerge git
@@ -16,6 +17,6 @@ emerge --autounmask-write=y --autounmask-continue=y virtual/wine
 
 #get oh my bash
 bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
-OSH_THEME="powerline"
+sed -i 's/OSH_THEME="powerline"/OSH_THEME="sexy"/' /home/fjp/.bashrc
 #get sadge
 
