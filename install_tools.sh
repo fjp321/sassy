@@ -14,9 +14,8 @@ emerge --autounmask-write=y --autounmask-continue=y virtual/wine
 
 #download zaffiro icons
 
-#get rust tools
-
-#get lua tools
-
+#get oh my bash
+bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
+OSH_THEME="powerline"
 #get sadge
 
