@@ -47,5 +47,7 @@ mount --make-rslave /mnt/gentoo/dev
 #download next scripts into /mnt/gentoo/
 wget https://raw.github.com/fjp321/fuzzy-goggles/main/install2.sh
 cp ~/config.sh ./config.sh
+chmod 777 install2.sh
+chmod 777 config.sh
 #should run next part
 chroot /mnt/gentoo ./install2.sh
