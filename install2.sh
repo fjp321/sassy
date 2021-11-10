@@ -6,7 +6,6 @@ source config.sh
 mount ${bootpar} /boot
 #update bins
 emerge-webrsync
-emerge --sync
 #set profile to desktop
 eselect profile set 5
 
