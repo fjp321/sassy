@@ -10,3 +10,6 @@ emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/sddm
 usermod -a -G video sddm
 sed -i 's/DISPLAYMANAGER="xdm"/DISPLAYMANAGER="sddm"/' /etc/conf.d/display-manager
 rc-update add display-manager default
+rc-update add elogind boot
+mkdir /home/${main_user}/.config
+cp /usr/share/wayfire/wayfire.ini /home/fjp/.config/wayfire.ini
