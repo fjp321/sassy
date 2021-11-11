@@ -4,6 +4,6 @@ passwd ${main_user}
 rm /stage3* /install2.sh /config.sh
 
 #wayland
-emerge -qv -update --changed-use -update
+emerge -qv --update --changed-use -update
 emerge -qv --autounmask-write=y --autounmask-continue=y gui-wm/wayfire
 emerge -qv --autounmask-write=y --autounmask-continue=y gui-apps/tuigreet
