@@ -5,3 +5,4 @@ rm /stage3* /install2.sh /config.sh
 
 #wayland
 rc-update add elogind boot
+
