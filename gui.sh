@@ -35,7 +35,7 @@ wget https://raw.github.com/fjp321/fuzzy-goggles/main/wallpaper2.png
 emerge -qv --autounmask-write=y --autounmask-continue=y app-editors/vim
 
 # terminal emulator 
-emerge -qv --autounmask-write=y --autounmask-continue=y x11-terms/terminator
+emerge -qv --autounmask-write=y --autounmask-continue=y x11-terms/kitty
 
 # file manager spacefm
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/spacefm
@@ -46,14 +46,4 @@ emerge -qv --autounmask-write=y --autounmask-continue=y app-office/abiword
 #polybar
 emerge -qv --autounmask-write=y --autounmask-continue=y  x11-misc/polybar
 
-#chat client (add discord support)
-emerge -qv --autounmask-write=y --autounmask-continue=y  net-im/pidgin
-
-#falkon
-emerge -qv --autounmask-write=y --autounmask-continue=y www-client/falkon
-
-#wine
-emerge -qv --autounmask-write=y --autounmask-continue=y virtual/wine
-
-#lutris
-emerge -qv --autounmask-write=y --autounmask-continue=y games-util/lutris
+#thunar
