@@ -4,7 +4,7 @@ passwd ${main_user}
 rm /stage3* /install2.sh /config.sh
 
 #wayland gui
-mkdir /home/${main_user}/.config
+mkdir -p /home/${main_user}/.config
 emerge -qv --autounmask-write=y --autounmask-continue=y app-eselect/eselect-repository
 eselect repository enable wayland-desktop
 emaint sync --repo wayland-desktop
