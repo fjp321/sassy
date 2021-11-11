@@ -8,5 +8,5 @@ emerge -qv --autounmask-write=y --autounmask-continue=y gui-wm/wayfire
 
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/sddm
 usermod -a -G video sddm
-
+sed -i 's/DISPLAYMANAGER="xdm"/DISPLAYMANAGER="sddm"/' /etc/conf.d/display-manager
 rc-update add display-manager default
