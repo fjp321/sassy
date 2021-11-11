@@ -4,7 +4,7 @@ passwd ${main_user}
 rm /stage3* /install2.sh /config.sh
 
 #wayland gui
-emerge -qv --autounmask-write=y --autounmask-continue=y gui-wm/wayfire
+emerge -qv --autounmask-write=y --autounmask-continue=y gui-wm/labwc
 
 emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/sddm
 usermod -a -G video sddm
