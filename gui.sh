@@ -1,7 +1,10 @@
 main_user=fjp
-useradd -m -G users,wheel,audio,video,input -s /bin/bash ${main_user}
+-create-home --groups users,wheel,portage,lp,adm,audio,cdrom,disk,usb,video,cron --shell /bin/bash --comment "${main_user}" ${main_user}
 passwd ${main_user}
 rm /stage3* /install2.sh /config.sh
+
+#add use for mesa
+echo -e "# required by standard X-server installation\nmedia-libs/mesa xa" >> /etc/portage/package.use/mesa 
 
 #wayland gui
 mkdir -p /home/${main_user}/.config
