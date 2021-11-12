@@ -7,6 +7,7 @@ rm /stage3* /install2.sh /config.sh
 mkdir -p /home/${main_user}/.config
 emerge -qv --autounmask-write=y --autounmask-continue=y app-eselect/eselect-repository
 eselect repository enable wayland-desktop
+mkdir -p /etc/portage/package.accept_keywords
 emaint sync --repo wayland-desktopecho "*/*::wayland-desktop ~amd64" > /etc/portage/package.accept_keywords/wayland-desktop
 emerge -qv --autounmask-write=y --autounmask-continue=y gui-wm/labwc
 
