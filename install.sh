@@ -27,11 +27,11 @@ tar xpvf $stage3tarball --xattrs-include='*.*' --numeric-owner
 
 #add options to make conf file
 sed -i 's/COMMON_FLAGS="-O2 -pipe"/COMMON_FLAGS="-O2 -pipe -march=native"/' etc/portage/make.conf
-echo -e '\n#MAKEOPTS\nMAKEOPTS="$mkopts"' >> etc/portage/make.conf
-echo -e '\n#default mirror for gentoo\nGENTOO_MIRRORS="${gentoomirror}"' >> etc/portage/make.conf
-echo -e '\n#video card options for amdgpu\nVIDEO_CARDS="${video_cards}"' >> etc/portage/make.conf
-echo -e '\n#input device for x\nINPUT_DEVICES="libinput"' >> etc/portage/make.conf
-echo -e '\n#global use flags\nUSE="${useflags_var}"' >> etc/portage/make.conf
+echo -e "\n#MAKEOPTS\nMAKEOPTS=\"${mkopts}\"" >> etc/portage/make.conf
+echo -e "\n#default mirror for gentoo\nGENTOO_MIRRORS=\"${gentoomirror}\"" >> etc/portage/make.conf
+echo -e "\n#video card options for amdgpu\nVIDEO_CARDS=\"${video_cards}\"" >> etc/portage/make.conf
+echo -e "\n#input device for x\nINPUT_DEVICES="libinput"" >> etc/portage/make.conf
+echo -e "\n#global use flags\nUSE=\"${useflags_var}\"" >> etc/portage/make.conf
 
 #add repos conf to portage
 mkdir --parents /mnt/gentoo/etc/portage/repos.conf
