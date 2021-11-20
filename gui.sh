@@ -5,18 +5,10 @@ rm /stage3* /install2.sh /config.sh
 
 #add use for mesa
 echo -e "# required by standard X-server installation\nmedia-libs/mesa xa" >> /etc/portage/package.use/mesa 
+emerge --qv --autounmask-write=y --autounmask-continue=y --deep --with-bdeps=y --changed-use --update @world
 
-#wayland gui
-mkdir -p /home/${main_user}/.config
-emerge -qv --autounmask-write=y --autounmask-continue=y app-eselect/eselect-repository
-eselect repository enable wayland-desktop
-mkdir -p /etc/portage/package.accept_keywords
-emaint sync --repo wayland-desktop
-echo "*/*::wayland-desktop ~amd64" > /etc/portage/package.accept_keywords/wayland-desktop
-emerge -qv --autounmask-write=y --autounmask-continue=y gui-wm/labwc
-
-emerge -qv --autounmask-write=y --autounmask-continue=y x11-misc/sddm
-usermod -a -G video sddm
-sed -i 's/DISPLAYMANAGER="xdm"/DISPLAYMANAGER="sddm"/' /etc/conf.d/display-manager
-rc-update add display-manager default
-rc-update add elogind boot
+#xorg
+emerge -qv --autounmask-write=y --autounmask-continue=y --oneshot x11-base/xorg-server 
+emerge -qv --autounmask-write=y --autounmask-continue=y x11-wm/twm x11-terms/xterm x11-apps/xclock x11-apps/xsetroot x11-apps/xrandr 
+chmod u+s /usr/libexec/Xorg 
+echo "#!/bin/sh\nLANG=C twm &\nxsetroot -solid CornflowerBlue &\nxclock -geometry 100x100-1+1 &\nxterm -geometry 80x50+494+51 &\nxterm -geometry 80x20+494-0 &\nexec xterm -geometry 80x66+0+0 -name login" > /home/fjp/.xinitrc
