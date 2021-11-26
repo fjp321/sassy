@@ -1,7 +1,7 @@
 source config.sh
 
 #make filesystems and swap
-mkfs.vfat -F 32 ${bootpar}
+mkfs.fat -F 32 ${bootpar}
 mkfs.ext4 ${rootpar}
 mkswap ${swappar}
 swapon ${swappar}
