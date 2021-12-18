@@ -9,6 +9,4 @@ echo -e "# required by standard X-server installation\nmedia-libs/mesa xa" >> /e
 emerge --qv --autounmask-write=y --autounmask-continue=y --deep --with-bdeps=y --changed-use --update @world
 
 #packages for gui as well as ee tools
-emerge ${emerge_flags} x11-base/xorg-server polybar iverilog kitty gtkwave chromium dev-vcs/git calcurse media-fonts/hack ripgrep dmenu bspwm feh sxhkd dmenu i3lock octave dev-python/pip app-eselect/eselect-repository rofi dunst picom cmus gimp alsa lutris sc-controller
-
-
+emerge ${emerge_flags} x11-base/xorg-server polybar iverilog kitty gtkwave www-client/otter dev-vcs/git calcurse media-fonts/hack ripgrep dmenu bspwm feh sxhkd dmenu i3lock octave dev-python/pip app-eselect/eselect-repository rofi dunst picom cmus gimp alsa jupyter
