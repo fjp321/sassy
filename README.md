@@ -31,7 +31,7 @@ After install2.sh is finished, enter root passwd, and exit and unmount using
 `umount -R /mnt/gentoo` 
 
 then reboot.
-
+) to wallpaper used, credits to JustJon the artist!
 ## Graphics setup
 
 Run 
@@ -39,6 +39,9 @@ Run
 `wget https://raw.github.com/fjp321/fuzzy-goggles/main/gui.sh`
 
 to get the bash script to emerge the packages for the gui that I use as well as edit config to how I use them.
+
+## Wallpaper
+[Link](https://wallhaven.cc/index.php/w/p8ev7e) to wallpaper used, credits to JustJon the artist!
 
 ## Important Note
 ### No Safety Checks
