@@ -5,4 +5,4 @@ passwd ${main_user}
 rm /stage3* /install2.sh /config.sh
 
 #packages for gui as well as ee tools
-emerge ${emerge_flags} x11-base/xorg-server polybar iverilog kitty gtkwave www-client/otter dev-vcs/git calcurse media-fonts/hack ripgrep dmenu bspwm feh sxhkd dmenu i3lock octave dev-python/pip app-eselect/eselect-repository rofi dunst picom cmus gimp alsa jupyter
+emerge ${emerge_flags} x11-base/xorg-server polybar iverilog kitty gtkwave www-client/otter dev-vcs/git calcurse media-fonts/hack ripgrep dmenu bspwm feh sxhkd dmenu i3lock octave dev-python/pip app-eselect/eselect-repository rofi dunst picom cmus gimp alsa jupyter blender
