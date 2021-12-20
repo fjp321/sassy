@@ -54,7 +54,6 @@ This script is for **amd64** processors.
 This script assumes [amd gpus](https://wiki.gentoo.org/wiki/AMDGPU#USE_flags). Check link for compatibility. 
 ## Todo
 - [ ] Update install.sh to exit on bad stage 3 checksum
-- [ ] Update install.sh to have arg for not including amd video card support
 - [ ] Add custom kernel support rather than genkernel all
 - [ ] Add gui set up
 - [ ] Update gui.sh to use dotfiles
