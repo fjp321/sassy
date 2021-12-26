@@ -2,6 +2,16 @@
 source /etc/profile
 source config.sh
 
+#network function
+network () {
+	
+	
+
+	#emerge wireless internet tools
+	emerge -qv --autounmask-write=y --autounmask-continue=y net-wireless/iw
+	emerge -qv --autounmask-write=y --autounmask-continue=y net-wireless/wpa_supplicant
+}
+
 #mount to boot
 mount ${bootpar} /boot
 #update bins
@@ -40,6 +50,9 @@ emerge -qv sys-kernel/linux-firmware
 echo -e "${swappar}\tnone\tswap\tsw\t0 0" >> /etc/fstab
 echo -e "${rootpar}\t/\text4\trw,noatime\t0 1" >> /etc/fstab
 
+#networking portion
+
+
 #set host name
 sed -i 's/hostname="localhost"/hostname="bristlecone"/' /etc/conf.d/hostname
 
@@ -58,10 +71,6 @@ emerge -qv --autounmask-write=y --autounmask-continue=y sys-fs/dosftools
 
 #emerge dhcpd to get internet and ip assignment
 emerge -qv --autounmask-write=y --autounmask-continue=y net-misc/dhcpcd
-
-#emerge wireless internet tools
-emerge -qv --autounmask-write=y --autounmask-continue=y net-wireless/iw
-emerge -qv --autounmask-write=y --autounmask-continue=y net-wireless/wpa_supplicant
 
 #add tools to rc
 rc-update add sysklogd default
