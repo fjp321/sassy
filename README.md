@@ -58,3 +58,6 @@ This script assumes [amd gpus](https://wiki.gentoo.org/wiki/AMDGPU#USE_flags). C
 - [ ] Add gui set up
 - [ ] Update gui.sh to use dotfiles
 - [ ] Create fork that works for arm processors (raspberry pis)
+
+
+Credits to https://github.com/b4skyx, I was heavily inspired by their dotfiles.
