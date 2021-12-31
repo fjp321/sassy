@@ -7,7 +7,8 @@ network () {
 	#emerge wireless internet tools
 	emerge -qv --autounmask-write=y --autounmask-continue=y net-wireless/wpa_supplicant
 	ln -s /etc/init.d/net.lo /etc/init.d/net.${wifi_dev}
-	
+	echo -e "config.${wifi_dev}=\"dhcp\"\nmodules=\"wpa_supplicant\"" >> /etc/conf.d/net
+	echo -e "ctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\nnap_scan=1\nnetwork={\n\tssid=\"${wifi_ssid}\"\n\tpsk=\"${wifi_pass}\"\n\tprioirt=5\n}" >> /etc/wpa_supplicant/wpa_supplicant.conf
 }
 
 #mount to boot
@@ -69,6 +70,8 @@ emerge -qv --autounmask-write=y --autounmask-continue=y sys-fs/dosftools
 
 #emerge dhcpd to get internet and ip assignment
 emerge -qv --autounmask-write=y --autounmask-continue=y net-misc/dhcpcd
+
+#add chack for network arg
 
 #add tools to rc
 rc-update add sysklogd default
