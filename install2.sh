@@ -4,12 +4,10 @@ source config.sh
 
 #network function
 network () {
-	
-	
-
 	#emerge wireless internet tools
-	emerge -qv --autounmask-write=y --autounmask-continue=y net-wireless/iw
 	emerge -qv --autounmask-write=y --autounmask-continue=y net-wireless/wpa_supplicant
+	ln -s /etc/init.d/net.lo /etc/init.d/net.${wifi_dev}
+	
 }
 
 #mount to boot
