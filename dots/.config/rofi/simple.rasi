@@ -1,0 +1,90 @@
+configuration {
+	display-drun: "";
+	display-run: "";
+	display-window: "缾";
+	icon-theme: "Flatery-Dark";
+	fixed-num-lines: true;
+	font: "Sarasa UI K 12";
+}
+
+@import "colors"
+
+window {
+	width: 30em;
+	spacing: 0;
+	transparency: "real";
+	background-color: @bg;
+	border: 3;
+	border-color: @bg2;
+	border-radius: 0;
+}
+
+inputbar {
+	background-color: @bg;
+	text-color: @fg;
+	border-color: @bg2;
+	children: [prompt, entry];
+	border: 0;
+}
+
+prompt {
+	background-color: @bg;
+	text-color: @fg;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	border: 0;
+}
+
+entry {
+	background-color: @bg;
+	text-color: @fg;
+	placeholder: "";
+	padding: 0.5em 0 0.5em 0;
+	border: 0;
+}
+
+listview {
+	background-color: @bg;
+	cycle: false;
+	dynamic: true;
+	padding: 0 0 0 0;
+	border: 0;
+	lines: 8;
+	columns: 1;
+	children: [element];
+}
+
+scrollbar {
+	handle-width: 0;
+}
+
+mainbox {
+	background-color: @bg;
+	border: 0;
+}
+
+element {
+	background-color: @bg;
+	text-color: @fg;
+	padding: 0px;
+	border: 0;
+}
+
+element selected {
+	background-color: @bg2;
+	text-color: @fg;
+	border: 0;
+}
+
+element-text {
+	background-color: @bg;
+	text-color: @fg;
+	border: 0;
+	padding: 0.2em 0.2em 0.2em 0.2em;
+}
+
+element-text selected {
+	background-color: @bg2;
+	text-color: @fg;
+	border: 0;
+	padding: 0.2em 0.2em 0.2em 0.2em;
+}
