@@ -8,7 +8,7 @@ rm /stage3* /install2.sh /config.sh
 echo -e "net-wireless/gnuradio grc uhd modtool" >> /etc/portage/package.use/gnuradio
 
 #packages for gui as well as ee tools
-emerge ${emerge_flags} x11-base/xorg-server x11-drivers/xf86-input-evdev lynx gentoolkit firefox polybar neofetch iverilog alacritty gtkwave dev-vcs/git calcurse media-fonts/hack ripgrep dmenu bspwm feh sxhkd octave lua dev-python/pip rofi dunst picom ncmpcpp gimp blender zathura =app-editors/neovim-0.6.0 mpv youtube-dl neomutt hsetroot vnstat app-eselect/eselect-repository =net-wireless/gnuradio-9999 playerctl 
+emerge ${emerge_flags} x11-base/xorg-server x11-drivers/xf86-input-evdev lynx gentoolkit firefox polybar neofetch iverilog alacritty gtkwave dev-vcs/git calcurse media-fonts/hack ripgrep dmenu bspwm feh sxhkd octave lua dev-python/pip rofi dunst picom ncmpcpp gimp blender zathura =app-editors/neovim-0.6.0 mpv youtube-dl neomutt hsetroot vnstat app-eselect/eselect-repository =net-wireless/gnuradio-9999 playerctl mpd
 
 rc-update add elogind boot
 /etc/init.d/elogind/start
