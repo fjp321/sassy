@@ -53,7 +53,7 @@ echo -e "${rootpar}\t/\text4\trw,noatime\t0 1" >> /etc/fstab
 
 
 #set host name
-sed -i 's/hostname="localhost"/hostname="bristlecone"/' /etc/conf.d/hostname
+sed -i 's/hostname="localhost"/hostname="${hostname}"/' /etc/conf.d/hostname
 
 #emerge system logger
 emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sysklogd
