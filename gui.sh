@@ -10,6 +10,9 @@ echo -e "net-wireless/gnuradio grc uhd modtool" >> /etc/portage/package.use/gnur
 #packages for gui as well as ee tools
 emerge ${emerge_flags} x11-base/xorg-server x11-drivers/xf86-input-evdev lynx gentoolkit firefox polybar neofetch iverilog alacritty gtkwave dev-vcs/git calcurse media-fonts/hack ripgrep dmenu bspwm feh sxhkd octave lua dev-python/pip rofi dunst picom ncmpcpp gimp blender zathura =app-editors/neovim-0.6.0 mpv youtube-dl neomutt hsetroot vnstat app-eselect/eselect-repository =net-wireless/gnuradio-9999 
 
+rc-update add elogind boot
+/etc/init.d/elogind/start
+
 # mkdir home directories
 mkdir /home/${main_user}/music
 mkdir /home/${main_user}/down
