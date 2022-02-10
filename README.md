@@ -31,14 +31,14 @@ After install2.sh is finished, enter root passwd, and exit and unmount using
 `umount -R /mnt/gentoo` 
 
 then reboot.
-) to wallpaper used, credits to JustJon the artist!
+
 ## Graphics setup
 
 Run 
 
 `wget https://raw.github.com/fjp321/fuzzy-goggles/main/gui.sh`
 
-to get the bash script to emerge the packages for the gui that I use as well as edit config to how I use them.
+to get the bash script to emerge the packages for the gui that I use as well as edit config to how I use them. Dotfiles are also included in this repository
 
 ## Wallpaper
 [Link](https://wallhaven.cc/index.php/w/p8ev7e) to wallpaper used, credits to JustJon the artist!
@@ -55,9 +55,7 @@ This script assumes [amd gpus](https://wiki.gentoo.org/wiki/AMDGPU#USE_flags). C
 ## Todo
 - [ ] Update install.sh to exit on bad stage 3 checksum
 - [ ] Add custom kernel support rather than genkernel all
-- [ ] Add gui set up
-- [ ] Update gui.sh to use dotfiles
-- [ ] Create fork that works for arm processors (raspberry pis)
+- [ ] Support a live usb system with calamares installer
 
 
 Credits to https://github.com/b4skyx, I was heavily inspired by their dotfiles.
