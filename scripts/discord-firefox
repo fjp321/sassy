@@ -1,6 +1,0 @@
-#!/bin/sh
-# Launch discord as a chrome app in chromium based browsers
-
-firefox-bin \
-	--new-window https://discord.com/app \
-    	$@ >/dev/null 2>&1 &

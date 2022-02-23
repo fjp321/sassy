@@ -1,3 +1,0 @@
-#!/bin/sh
-# alias for drop down terminal
-tdrop -am -w 780 -h 522 -x 552 -y 261 "$@"
