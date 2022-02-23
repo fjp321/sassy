@@ -1,4 +1,4 @@
-# fuzzy-goggles
+# Sassy Bash Script
 bash script to run from installation media to setup gentoo automagically, use [gentoo amd64 wiki as source](https://wiki.gentoo.org/wiki/Handbook:AMD64)
 
 # README IS UNDER NEW CONSTRUCTION
@@ -8,11 +8,11 @@ run net-setup to connect to internet, and ensure that connection is good by ping
 ## Download
 Run 
 
-`wget https://raw.github.com/fjp321/fuzzy-goggles/main/install.sh`
+`wget https://raw.github.com/fjp321/sassy/main/install.sh`
 
 and 
 
-`wget https://raw.github.com/fjp321/fuzzy-goggles/main/config.sh`
+`wget https://raw.github.com/fjp321/sassy/main/config.sh`
 
 Then run 
 `chmod 777 install.sh config.sh`
@@ -36,7 +36,7 @@ then reboot.
 
 Run 
 
-`wget https://raw.github.com/fjp321/fuzzy-goggles/main/gui.sh`
+`wget https://raw.github.com/fjp321/sassy/main/gui.sh`
 
 to get the bash script to emerge the packages for the gui that I use as well as edit config to how I use them. Dotfiles are also included in this repository
 
