@@ -10,4 +10,4 @@ wifi_dev="wlp1s0"
 wifi_ssid="node"
 wifi_pass="secret"
 hostname="computer"
-timezone="America/New_York
+timezone="America/New_York"
