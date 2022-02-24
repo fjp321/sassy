@@ -27,7 +27,7 @@ emerge -qv --update --deep --changed-use --autounmask-write=y --autounmask-conti
 echo -e ACCEPT_LICENSE=\"*\" >> /etc/portage/make.conf
 
 #set timezone to newyork, america
-echo America/New_York > /etc/timezone
+echo ${timezone} > /etc/timezone
 emerge -qv --config sys-libs/timezone-data
 
 #set locale
