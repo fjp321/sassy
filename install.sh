@@ -1,5 +1,29 @@
 source config.sh
 
+# command args checked
+function show_usage (){
+    printf "Usage: $0 [options [parameters]]\n"
+    printf "\n"
+    printf "Options:\n"
+    printf " -w|--wifi, will run with wifi support\n"
+    printf " -d|--disk, will run fdisk on specified drive in config.sh\n"
+    printf " -a|--amd, will use USE flags for amd gpu, mutually exclusive with --nvidia\n"
+    printf " -n|--nvidia, will use USE flags for nvidia gpu, mutually exclusive with --amd\n"
+    printf " -g|--gui, will include installation of openbox and lightdm\n"
+#   not included yet
+#   printf " -k|--kernel, specify genkernel config file, otherwise will run genkernel all\n"
+    printf " -h|--help, Print help\n"
+
+return 0
+}
+
+if [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]];then
+    show_usage
+else
+    echo "Incorrect input provided"
+    show_usage
+fi
+
 #make filesystems and swap
 mkfs.fat -F 32 ${bootpar}
 mkfs.ext4 ${rootpar}
