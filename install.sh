@@ -16,11 +16,11 @@ mount ${rootpar} /mnt/gentoo
 cd /mnt/gentoo
 
 #download read and store (into stage3location) where the latest stage 3 tarball for openrc is
-wget $gentoomirror/releases/amd64/autobuilds/latest-stage3-amd64-openrc.txt
+wget ${gentoomirror}/releases/amd64/autobuilds/latest-stage3-amd64-openrc.txt
 IFS=' ' read -r stage3location z <<< $(tail -n +3 latest-stage3-amd64-openrc.txt)
 IFS='/' read -r z stage3tarball <<< $stage3location
 rm latest-stage3-amd64-openrc.txt
-wget $gentoomirror/releases/amd64/autobuilds/$stage3location
+wget ${gentoomirror}/releases/amd64/autobuilds/$stage3location
 
 #unzip tar ball
 tar xpvf $stage3tarball --xattrs-include='*.*' --numeric-owner
@@ -50,5 +50,7 @@ wget https://raw.github.com/fjp321/fuzzy-goggles/main/install2.sh
 cp ~/config.sh ./config.sh
 chmod 777 install2.sh
 chmod 777 config.sh
+echo CHROOT INTO /mnt/gentoo WITH
+echo chroot /mnt/gentoo /bin/bash
 #should run next part
-chroot /mnt/gentoo ./install2.sh
+# chroot /mnt/gentoo ./install2.sh
