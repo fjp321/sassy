@@ -22,9 +22,6 @@ while getopts "gw" options; do
                 w)
                         wifi_arg=1
                         ;;
-                g)
-                        gui_flag=1
-                        ;;
         esac
 done
 
@@ -75,21 +72,8 @@ fi
 #set host name
 sed -i 's/hostname="localhost"/hostname="${hostname}"/' /etc/conf.d/hostname
 
-#emerge system logger
-emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sysklogd
-
-#emerge cron daemon
-emerge -qv --autounmask-write=y --autounmask-continue=y sys-process/dcron
-
-#emerge mlocate for file indexing
-emerge -qv --autounmask-write=y --autounmask-continue=y sys-apps/mlocate
-
-# emerge fs tools 
-emerge -qv --autounmask-write=y --autounmask-continue=y sys-fs/e2fsprogs
-emerge -qv --autounmask-write=y --autounmask-continue=y sys-fs/dosftools
-
-#emerge dhcpd to get internet and ip assignment
-emerge -qv --autounmask-write=y --autounmask-continue=y net-misc/dhcpcd
+#emerge system logger, cron daemon, mlocate for file indexing, fs tools, dhcpd to get internet and ip assignment, lynx, git, gentoolkit
+emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sysklogd net-misc/dhcpcd sys-process/dcron sys-apps/mlocate sys-fs/e2fsprogs sys-fs/dosftools dev-vcs/git lynx gentoolkit
 
 #add tools to rc
 rc-update add sysklogd default
@@ -100,13 +84,6 @@ echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge -qv --autounmask-write=y --autounmask-continue=y sys-boot/grub:2
 grub-install --target=x86_64-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
-
-# check and install gui elements
-if [ gui_flags = 1 ]
-then
-	emerge -qv --autounmask=y --autounmask-write=y --autounmask-continue=y x11-base/xorg-server x11-drivers/xf86-input-evdev lynx gentoolkit firefox neofetch x11-terms/st dev-vcs/git calcurse feh dev-python/pip libreoffice app-editors/vim neomutt app-eselect/eselect-repository lightdm openbox
-	rc-update add elogind boot
-fi
 
 #set root passwd
 echo THIS IS ROOT PASSWD
