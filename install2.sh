@@ -92,7 +92,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo THIS IS ROOT PASSWD
 passwd
 
-useradd fjp 
+useradd --create-home --groups tty,users,wheel,portage,lp,adm,audio,cdrom,disk,usb,video,cron --shell /bin/bash --comment "${main_user}" ${main_user}
 
 if [ gui_flag = 1 ]
 then
