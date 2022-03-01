@@ -196,7 +196,5 @@ wget https://raw.github.com/fjp321/fuzzy-goggles/main/install2.sh
 cp ~/config.sh ./config.sh
 chmod 777 install2.sh
 chmod 777 config.sh
-echo CHROOT INTO /mnt/gentoo WITH
-echo chroot /mnt/gentoo /bin/bash
 #should run next part
-# chroot /mnt/gentoo ./install2.sh
+chroot /mnt/gentoo ./install2.sh
