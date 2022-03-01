@@ -31,6 +31,8 @@ update() {
         if [ ! prompt = "" ]
         then
                 echo $prompt
+        else
+                echo $1
         fi
 }
 
@@ -97,10 +99,10 @@ then
 fi
 
 printf "Specify boot partition. (press enter for default ${bootpar} > "
-bootpar=$(update)
+bootpar=$(update "${bootpar}")
 
 printf "Specify swap partition. (press enter for default ${swappar} > "
-swappar=$(update)
+swappar=$(update "${swappar}")
 echo ${swappar}
 
 printf "Specify root partition. (press enter for default ${rootpar}) > "
