@@ -11,10 +11,3 @@ emerge ${emerge_flags} x11-base/xorg-server x11-drivers/xf86-input-evdev lynx ge
 
 rc-update add elogind boot
 /etc/init.d/elogind/start
-
-# mkdir home directories
-mkdir /home/${main_user}/music
-mkdir /home/${main_user}/down
-mkdir /home/${main_user}/doc
-mkdir /home/${main_user}/script_dev
-mkdir /home/${main_user}/git
