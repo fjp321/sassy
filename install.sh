@@ -16,6 +16,7 @@ wifi_ssid="node"
 wifi_pass="secret"
 hostname="computer"
 timezone="America/New_York"
+main_user="user"
 
 # command line arg flags
 config_flag=0
@@ -136,6 +137,9 @@ hostname=$(update ${hostname})
 
 printf "Specify timezone. If you are unsure, please proceed with default and reconfigure after the system is installed. (press enter for default ${timezone}) > "
 timezone=$(update ${timezone})
+
+printf "Specify main username. (press enter for default ${hostname}) > "
+main_user=$(update ${main_user})
 
 # update options into config.sh
 echo -e "bootpar=\"${bootpar}\"" >> config.sh
