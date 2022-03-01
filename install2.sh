@@ -2,6 +2,8 @@
 source /etc/profile
 source config.sh
 
+trap "pkill -P $$" EXIT
+
 #network function
 network () {
 	#emerge wireless internet tools
@@ -10,6 +12,21 @@ network () {
 	echo -e "config.${wifi_dev}=\"dhcp\"\nmodules=\"wpa_supplicant\"" >> /etc/conf.d/net
 	echo -e "ctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\nnap_scan=1\nnetwork={\n\tssid=\"${wifi_ssid}\"\n\tpsk=\"${wifi_pass}\"\n\tprioirt=5\n}" >> /etc/wpa_supplicant/wpa_supplicant.conf
 }
+
+# command line arg flags
+wifi_flag=0
+gui_flag=0
+
+while getopts "gw" options; do
+        case "${options}" in
+                w)
+                        wifi_arg=1
+                        ;;
+                g)
+                        gui_flag=1
+                        ;;
+        esac
+done
 
 #mount to boot
 mount ${bootpar} /boot
@@ -50,8 +67,10 @@ echo -e "${swappar}\tnone\tswap\tsw\t0 0" >> /etc/fstab
 echo -e "${rootpar}\t/\text4\trw,noatime\t0 1" >> /etc/fstab
 
 #networking portion
-
-
+if [ wifi_flag = 1 ]
+then 
+	network
+fi
 
 #set host name
 sed -i 's/hostname="localhost"/hostname="${hostname}"/' /etc/conf.d/hostname
@@ -72,8 +91,6 @@ emerge -qv --autounmask-write=y --autounmask-continue=y sys-fs/dosftools
 #emerge dhcpd to get internet and ip assignment
 emerge -qv --autounmask-write=y --autounmask-continue=y net-misc/dhcpcd
 
-#add chack for network arg
-
 #add tools to rc
 rc-update add sysklogd default
 rc-update add dcron default
@@ -84,5 +101,18 @@ emerge -qv --autounmask-write=y --autounmask-continue=y sys-boot/grub:2
 grub-install --target=x86_64-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# check and install gui elements
+if [ gui_flags = 1 ]
+then
+	emerge -qv --autounmask=y --autounmask-write=y --autounmask-continue=y x11-base/xorg-server x11-drivers/xf86-input-evdev lynx gentoolkit firefox neofetch x11-terms/st dev-vcs/git calcurse feh dev-python/pip libreoffice app-editors/vim neomutt app-eselect/eselect-repository lightdm openbox
+	rc-update add elogind boot
+fi
+
 #set root passwd
+echo THIS IS ROOT PASSWD
 passwd
+
+#set up main user
+useradd --create-home --groups tty,users,wheel,portage,lp,adm,audio,cdrom,disk,usb,video,cron --shell /bin/bash --comment "${main_user}" ${main_user}
+echo THIS IS MAIN USER PASSWD
+passwd ${main_user}
