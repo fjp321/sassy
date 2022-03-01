@@ -98,10 +98,10 @@ then
         fdisk ${disk}
 fi
 
-printf "Specify boot partition. (press enter for default ${bootpar} > "
+printf "Specify boot partition. (press enter for default ${bootpar}) > "
 bootpar=$(update ${bootpar})
 
-printf "Specify swap partition. (press enter for default ${swappar} > "
+printf "Specify swap partition. (press enter for default ${swappar}) > "
 swappar=$(update ${swappar})
 
 printf "Specify root partition. (press enter for default ${rootpar}) > "
