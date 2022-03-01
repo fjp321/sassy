@@ -220,8 +220,21 @@ chmod 777 config.sh
 #should run next part
 if [ wifi_arg = 1 ] 
 then
-        chroot /mnt/gentoo ./install2.sh -w
+        if [ gui_flag = 1 ]
+        then
+                chroot /mnt/gentoo ./install2.sh -wg      
+        else
+                chroot /mnt/gentoo ./install2.sh -w
+        fi
+else
+        if [ gui_flag = 1 ]
+        then
+                chroot /mnt/gentoo ./install2.sh -g
+        else
+                chroot /mnt/gentoo ./install2.sh
+        fi        
 fi
+
 
 rm -rf /mnt/gentoo/stage3* /mnt/gentoo/install2.sh /mnt/gentoo/config.sh
 
