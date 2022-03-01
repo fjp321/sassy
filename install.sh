@@ -26,6 +26,7 @@ amd_flag=0
 nvidia_flag=0
 intel_flag=0
 gui_flag=0
+fast_flag=0
 
 # read prompt function
 update() {
@@ -48,6 +49,7 @@ usage() {
         printf " -n, will use USE flags for nvidia gpu, mutually exclusive with other gpus\n"
         printf " -i, will use USE flags for intel gpu, mutually exclusive with other gpus\n"
         printf " -g, will include installation of openbox and lightdm\n"
+        printf " -f, will go fast and skip user input\n"
 #       not included yet
 #       printf " -k|--kernel, specify genkernel config file, otherwise will run genkernel all\n"
         printf " -h, Print help\n"
@@ -79,6 +81,9 @@ while getopts "dwang" options; do
                 g)
                         gui_flag=1
                         ;;
+                f)
+                        fast_flag=1
+                        ;;
                 *)
                         exit_abnormal
                         ;;
@@ -97,56 +102,62 @@ if [ $amd_flag = 0 ] && [ $nvidia_flag = 0 ] && [ $intel_flag = 1 ]
 then
         video_cards="intel"
 fi
-# specify device
-printf "Specify device to write to (press enter for default /dev/sda) > "
-disk=$(update ${disk})
 
-if [ fdisk_flag = 1 ]
+if [ fast_flag = 0 ] 
 then
-        fdisk ${disk}
+
+        # specify device
+        printf "Specify device to write to (press enter for default /dev/sda) > "
+        disk=$(update ${disk})
+        
+        if [ fdisk_flag = 1 ]
+        then
+                fdisk ${disk}
+        fi
+        
+        printf "Specify boot partition. (press enter for default ${bootpar}) > "
+        bootpar=$(update ${bootpar})
+        
+        printf "Specify swap partition. (press enter for default ${swappar}) > "
+        swappar=$(update ${swappar})
+
+        printf "Specify root partition. (press enter for default ${rootpar}) > "
+        rootpar=$(update ${rootpar})
+
+        printf "Specify default mirror to be used, please use most geographically close mirror. A full list of mirrors can be found at https://www.gentoo.org/downloads/mirrors/. (press enter for default ${gentoomirror}) > "
+        gentoomirror=$(update ${gentoomirror})
+
+        printf "Specify the number of parallel make jobs. More info can be found at https://wiki.gentoo.org/wiki/MAKEOPTS. (press enter for default ${mkopts}) > "
+        mkopts=$(update ${mkopts})
+
+        printf "Change the global USE flags for the system. It is suggested to go with defaults. More info can be found https://wiki.gentoo.org/wiki/USE_flag. (press enter for defaults \"${useflags_var}\") > "
+        useflags_var=$(update ${useflags_vars})
+
+        printf "Specify the video card flags to use. More information can be found at https://wiki.gentoo.org/wiki/Xorg/Guide#Make.conf. (press enter for default ${video_cards}) > "
+        video_cards=$(update ${video_cards})
+
+        if [ wifi_flag = 1 ]
+        then
+                printf "Specify the wifi device that is to be used. If you are unsure, please exit this script and run ifconfig. (press enter for default ${wifi_dev}) > "
+                wifi_dev=$(update ${wifi_dev})
+        
+                printf "Specify wifi SSID. (press enter for default ${wifi_ssid}) > "
+                wifi_ssid=$(update ${wifi_ssid})
+        
+                printf "Specify wifi password. (press enter for default ${wifi_pass}) > "
+                wifi_pass=$(update ${wifi_pass})
+        fi
+
+        printf "Specify hostname. (press enter for default ${hostname}) > "
+        hostname=$(update ${hostname})
+
+        printf "Specify timezone. If you are unsure, please proceed with default and reconfigure after the system is installed. (press enter for default ${timezone}) > "
+        timezone=$(update ${timezone})
+
+        printf "Specify main username. (press enter for default ${hostname}) > "
+        main_user=$(update ${main_user})
 fi
 
-printf "Specify boot partition. (press enter for default ${bootpar}) > "
-bootpar=$(update ${bootpar})
-
-printf "Specify swap partition. (press enter for default ${swappar}) > "
-swappar=$(update ${swappar})
-
-printf "Specify root partition. (press enter for default ${rootpar}) > "
-rootpar=$(update ${rootpar})
-
-printf "Specify default mirror to be used, please use most geographically close mirror. A full list of mirrors can be found at https://www.gentoo.org/downloads/mirrors/. (press enter for default ${gentoomirror}) > "
-gentoomirror=$(update ${gentoomirror})
-
-printf "Specify the number of parallel make jobs. More info can be found at https://wiki.gentoo.org/wiki/MAKEOPTS. (press enter for default ${mkopts}) > "
-mkopts=$(update ${mkopts})
-
-printf "Change the global USE flags for the system. It is suggested to go with defaults. More info can be found https://wiki.gentoo.org/wiki/USE_flag. (press enter for defaults \"${useflags_var}\") > "
-useflags_var=$(update ${useflags_vars})
-
-printf "Specify the video card flags to use. More information can be found at https://wiki.gentoo.org/wiki/Xorg/Guide#Make.conf. (press enter for default ${video_cards}) > "
-video_cards=$(update ${video_cards})
-
-if [ wifi_flag = 1 ]
-then
-        printf "Specify the wifi device that is to be used. If you are unsure, please exit this script and run ifconfig. (press enter for default ${wifi_dev}) > "
-        wifi_dev=$(update ${wifi_dev})
-
-        printf "Specify wifi SSID. (press enter for default ${wifi_ssid}) > "
-        wifi_ssid=$(update ${wifi_ssid})
-
-        printf "Specify wifi password. (press enter for default ${wifi_pass}) > "
-        wifi_pass=$(update ${wifi_pass})
-fi
-
-printf "Specify hostname. (press enter for default ${hostname}) > "
-hostname=$(update ${hostname})
-
-printf "Specify timezone. If you are unsure, please proceed with default and reconfigure after the system is installed. (press enter for default ${timezone}) > "
-timezone=$(update ${timezone})
-
-printf "Specify main username. (press enter for default ${hostname}) > "
-main_user=$(update ${main_user})
 
 # update options into config.sh
 echo -e "bootpar=\"${bootpar}\"" >> config.sh
