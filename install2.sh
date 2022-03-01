@@ -52,6 +52,7 @@ echo -e "${rootpar}\t/\text4\trw,noatime\t0 1" >> /etc/fstab
 #networking portion
 
 
+
 #set host name
 sed -i 's/hostname="localhost"/hostname="${hostname}"/' /etc/conf.d/hostname
 
