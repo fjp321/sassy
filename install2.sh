@@ -20,8 +20,11 @@ gui_flag=0
 while getopts "gw" options; do
         case "${options}" in
                 w)
-                        wifi_arg=1
+                        wifi_flag=1
                         ;;
+		g)
+			gui_flag=1
+			;;
         esac
 done
 
@@ -75,6 +78,11 @@ sed -i 's/hostname="localhost"/hostname="${hostname}"/' /etc/conf.d/hostname
 #emerge system logger, cron daemon, mlocate for file indexing, fs tools, dhcpd to get internet and ip assignment, lynx, git, gentoolkit
 emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sysklogd net-misc/dhcpcd sys-process/dcron sys-apps/mlocate sys-fs/e2fsprogs sys-fs/dosftools dev-vcs/git lynx gentoolkit
 
+if [ gui_flag = 1 ]
+then
+	emerge -qv --autounmask-write=y --autounmask-continue=y x11-base/xorg-server x11-drivers/xf86-input-evdev firefox neofetch x11-terms/st calcurse feh dev-python/pip libreoffice app-editors/vim neomutt app-eselect/eselect-repository lightdm openbox
+fi
+
 #add tools to rc
 rc-update add sysklogd default
 rc-update add dcron default
@@ -88,3 +96,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #set root passwd
 echo THIS IS ROOT PASSWD
 passwd
+
+
