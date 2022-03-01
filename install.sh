@@ -60,7 +60,7 @@ exit_abnormal() {
         exit 1
 }
 
-while getopts "dwang" options; do
+while getopts "dwafng" options; do
         case "${options}" in
                 w)
                         wifi_arg=1
