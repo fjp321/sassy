@@ -152,7 +152,7 @@ then
         printf "Specify timezone. If you are unsure, please proceed with default and reconfigure after the system is installed. (press enter for default ${timezone}) > "
         timezone=$(update ${timezone})
 
-        printf "Specify main username. (press enter for default ${hostname}) > "
+        printf "Specify main username. (press enter for default ${main_user}) > "
         main_user=$(update ${main_user})
 fi
 
@@ -164,7 +164,8 @@ echo -e "rootpar=\"${rootpar}\"" >> config.sh
 echo -e "hostname=\"${hostname}\"" >> config.sh
 echo -e "wifi_dev=\"${wifi_dev}\"" >> config.sh
 echo -e "wifi_ssid=\"${wif_ssid}\"" >> config.sh
-echo -e "wif_pass=\"${wifi_pass}\"" >> config.sh
+echo -e "wifi_pass=\"${wifi_pass}\"" >> config.sh
+echo -e "main_user=\"${main_user}\"" >> config.sh
 
 #make filesystems and swap
 mkfs.fat -F 32 ${bootpar}
