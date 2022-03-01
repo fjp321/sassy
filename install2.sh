@@ -78,11 +78,6 @@ sed -i 's/hostname="localhost"/hostname="${hostname}"/' /etc/conf.d/hostname
 #emerge system logger, cron daemon, mlocate for file indexing, fs tools, dhcpd to get internet and ip assignment, lynx, git, gentoolkit
 emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sysklogd net-misc/dhcpcd sys-process/dcron sys-apps/mlocate sys-fs/e2fsprogs sys-fs/dosftools dev-vcs/git lynx gentoolkit
 
-if [ gui_flag = 1 ]
-then
-	emerge -qv --autounmask-write=y --autounmask-continue=y x11-base/xorg-server x11-drivers/xf86-input-evdev firefox neofetch x11-terms/st calcurse feh dev-python/pip libreoffice app-editors/vim neomutt app-eselect/eselect-repository lightdm openbox
-fi
-
 #add tools to rc
 rc-update add sysklogd default
 rc-update add dcron default
@@ -97,4 +92,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo THIS IS ROOT PASSWD
 passwd
 
+useradd fjp 
 
+if [ gui_flag = 1 ]
+then
+	emerge -qv --autounmask-write=y --autounmask-continue=y x11-base/xorg-server x11-drivers/xf86-input-evdev firefox neofetch x11-terms/st calcurse feh dev-python/pip libreoffice app-editors/vim neomutt app-eselect/eselect-repository lightdm openbox
+fi
