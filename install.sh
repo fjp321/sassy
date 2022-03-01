@@ -80,6 +80,9 @@ while getopts "dwang" options; do
                 f)
                         fast_flag=1
                         ;;
+                g)
+                        gui_flag=1
+                        ;;
                 *)
                         exit_abnormal
                         ;;
