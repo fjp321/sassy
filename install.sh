@@ -221,6 +221,6 @@ then
         fi
 fi
 
-rm mnt/gentoo/stage3* mnt/gentoo/install2.sh mnt/gentoo/config.sh
+rm -rf /mnt/gentoo/stage3* /mnt/gentoo/install2.sh /mnt/gentoo/config.sh
 
 # add reboot support
