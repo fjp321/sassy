@@ -217,7 +217,6 @@ then
                 chroot /mnt/gentoo ./install2.sh -w
         fi
 else
-then
         if [ gui_arg = 1 ]
         then
                 chroot /mnt/gentoo ./install2.sh -g
