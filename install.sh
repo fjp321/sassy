@@ -1,28 +1,158 @@
-source config.sh
 
-# command args checked
-function show_usage (){
-    printf "Usage: $0 [options [parameters]]\n"
-    printf "\n"
-    printf "Options:\n"
-    printf " -w|--wifi, will run with wifi support\n"
-    printf " -d|--disk, will run fdisk on specified drive in config.sh\n"
-    printf " -a|--amd, will use USE flags for amd gpu, mutually exclusive with --nvidia\n"
-    printf " -n|--nvidia, will use USE flags for nvidia gpu, mutually exclusive with --amd\n"
-    printf " -g|--gui, will include installation of openbox and lightdm\n"
-#   not included yet
-#   printf " -k|--kernel, specify genkernel config file, otherwise will run genkernel all\n"
-    printf " -h|--help, Print help\n"
+#!/bin/bash
 
-return 0
+trap "pkill -P $$" EXIT
+
+disk="/dev/sda" #pre partition i.e. sda*, nvme0n1p*
+bootpar="/dev/sda1"
+swappar="/dev/sda2"
+rootpar="/dev/sda3"
+gentoomirror="https://mirrors.rit.edu/gentoo"
+mkopts="-j4"
+useflags_var="X elogind gmp gtk opengl pulseaudio python sound svg video vulkan -console-kit -systemd"
+video_cards="virtualbox"
+wifi_dev="wlp1s0"
+wifi_ssid="node"
+wifi_pass="secret"
+hostname="computer"
+timezone="America/New_York"
+
+# command line arg flags
+config_flag=0
+wifi_flag=0
+fdisk_flag=0
+amd_flag=0
+nvidia_flag=0
+gui_flag=0
+
+# read prompt function
+update() {
+        read prompt
+        if [ ! prompt = "" ]
+        then
+                echo $prompt
+        fi
 }
 
-if [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]];then
-    show_usage
-else
-    echo "Incorrect input provided"
-    show_usage
+# help message function
+usage() {
+        printf "Usage: $0 [options [parameters]]\n"
+        printf "Options:\n"
+        printf " -w, will run with wifi support\n"
+        printf " -d, will run fdisk on specified drive in config.sh\n"
+        printf " -a, will use USE flags for amd gpu, mutually exclusive with --nvidia\n"
+        printf " -n, will use USE flags for nvidia gpu, mutually exclusive with --amd\n"
+        printf " -g, will include installation of openbox and lightdm\n"
+#       not included yet
+#       printf " -k|--kernel, specify genkernel config file, otherwise will run genkernel all\n"
+        printf " -h, Print help\n"
+}
+
+# error handled exit
+exit_abnormal() {
+        usage
+        exit 1
+}
+
+while getopts "dwang" options; do
+        case "${options}" in
+                w)
+                        wifi_arg=1
+                        ;;
+                d)
+                        fdisk_flag=1
+                        ;;
+                a)
+                        amd_flag=1
+                        ;;
+                n)
+                        nvidia_flag=1
+                        ;;
+                g)
+                        gui_flag=1
+                        ;;
+                *)
+                        exit_abnormal
+                        ;;
+        esac
+done
+
+if [ $wifi_flag = 1 ]
+then
+        echo wifi_arg detected
 fi
+
+if [ $fdisk_flag = 1 ]
+then
+        echo fdisk_flag detected
+fi
+
+if [ $amd_flag = 1 ] && [ $nvidia_flag = 0 ]
+then
+        echo amd_flag detected
+elif [ $amd_flag = 0 ] && [ $nvidia_flag = 1 ]
+then
+        echo nvidia_flag detected
+else
+        exit_abnormal
+fi
+
+# specify device
+printf "Specify device to write to (press enter for default /dev/sda) > "
+disk=$(update)
+
+if [ fdisk_flag = 1 ]
+then
+        fdisk ${disk}
+fi
+
+printf "Specify boot partition (press enter for default /dev/sda1) > "
+bootpar=$(update)
+
+printf "Specify swap partition (press enter for default /dev/sda2) > "
+swappar=$(update)
+
+printf "Specify root partition (press enter for default /dev/sda3) > "
+rootpar=$(update)
+
+printf "Specify default mirror to be used, please use most geographically close mirror. A full list of mirrors can be found at https://www.gentoo.org/downloads/mirrors/. (press enter for default https://mirrors.rit.edu/gentoo) > "
+gentoomirror=$(update)
+
+printf "Specify the number of parallel make jobs. More info can be found at https://wiki.gentoo.org/wiki/MAKEOPTS. (press enter for default -j8) > "
+mkopts=$(update)
+
+printf "Change the global USE flags for the system. It is suggested to go with defaults. More info can be found https://wiki.gentoo.org/wiki/USE_flag. (press enter for defaults \"X elogind gmp gtk opengl pulseaudio python sound svg video vulkan -console-kit -systemd\") > "
+useflags_var=$(update)
+
+printf "Specify the video card flags to use. More information can be found at https://wiki.gentoo.org/wiki/Xorg/Guide#Make.conf. (press enter for default virtualbox) > "
+video_cards=$(update)
+
+if [ wifi_flag = 1 ]
+then
+        printf "Specify the wifi device that is to be used. If you are unsure, please exit this script and run ifconfig. (press enter for default wlp1s0) > "
+        wifi_dev=$(update)
+
+        printf "Specify wifi SSID. (press enter for default node) > "
+        wifi_ssid=$(update)
+
+        printf "Specify wifi password. (press enter for default secret) > "
+        wifi_pass=$(update)
+fi
+
+printf "Specify hostname. (press enter for default computer) > "
+hostname=$(update)
+
+printf "Specify timezone. If you are unsure, please proceed with default and reconfigure after the system is installed. (press enter for default America/New_York) > "
+timezone=$(update)
+
+# update options into config.sh
+echo -e "bootpar=\"${bootpar}\"" >> config.sh
+echo -e "swappar=\"${swappar}\"" >> config.sh
+echo -e "rootpar=\"${rootpar}\"" >> config.sh
+echo -e "hostname=\"${hostname}\"" >> config.sh
+echo -e "wifi_dev=\"${wifi_dev}\"" >> config.sh
+echo -e "wifi_ssid=\"${wif_ssid}\"" >> config.sh
+echo -e "wif_pass=\"${wifi_pass}\"" >> config.sh
 
 #make filesystems and swap
 mkfs.fat -F 32 ${bootpar}
