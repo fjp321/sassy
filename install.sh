@@ -49,7 +49,7 @@ usage() {
         printf " -n, will use USE flags for nvidia gpu, mutually exclusive with other gpus\n"
         printf " -i, will use USE flags for intel gpu, mutually exclusive with other gpus\n"
         printf " -g, will include installation of openbox and lightdm\n"
-        printf " -f, will go fast and skip user input\n"
+        printf " -f, will go fast and skip user input, ignores gpu flags\n"
 #       not included yet
 #       printf " -k|--kernel, specify genkernel config file, otherwise will run genkernel all\n"
         printf " -h, Print help\n"
