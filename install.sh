@@ -197,4 +197,22 @@ cp ~/config.sh ./config.sh
 chmod 777 install2.sh
 chmod 777 config.sh
 #should run next part
-chroot /mnt/gentoo ./install2.sh
+if [ wifi_arg = 1 ] 
+then
+        if [ gui_arg = 1 ]
+        then
+                chroot /mnt/gentoo ./install2.sh -wg
+        else
+        then 
+                chroot /mnt/gentoo ./install2.sh -w
+        fi
+else
+then
+        if [ gui_arg = 1 ]
+        then
+                chroot /mnt/gentoo ./install2.sh -g
+        else
+        then 
+                chroot /mnt/gentoo ./install2.sh
+        fi
+fi
