@@ -111,8 +111,3 @@ fi
 #set root passwd
 echo THIS IS ROOT PASSWD
 passwd
-
-#set up main user
-useradd --create-home --groups tty,users,wheel,portage,lp,adm,audio,cdrom,disk,usb,video,cron --shell /bin/bash --comment "${main_user}" ${main_user}
-echo THIS IS MAIN USER PASSWD
-passwd ${main_user}
