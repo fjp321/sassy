@@ -214,7 +214,6 @@ then
         then
                 chroot /mnt/gentoo ./install2.sh -wg
         else
-        then 
                 chroot /mnt/gentoo ./install2.sh -w
         fi
 else
@@ -223,7 +222,6 @@ then
         then
                 chroot /mnt/gentoo ./install2.sh -g
         else
-        then 
                 chroot /mnt/gentoo ./install2.sh
         fi
 fi
