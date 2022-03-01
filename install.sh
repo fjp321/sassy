@@ -77,22 +77,12 @@ while getopts "dwang" options; do
         esac
 done
 
-if [ $wifi_flag = 1 ]
-then
-        echo wifi_arg detected
-fi
-
-if [ $fdisk_flag = 1 ]
-then
-        echo fdisk_flag detected
-fi
-
 if [ $amd_flag = 1 ] && [ $nvidia_flag = 0 ]
 then
-        echo amd_flag detected
+        video_card="amdgpu radeonsi"
 elif [ $amd_flag = 0 ] && [ $nvidia_flag = 1 ]
 then
-        echo nvidia_flag detected
+        video_cards="nvidia nouveau"
 else
         exit_abnormal
 fi
@@ -106,19 +96,20 @@ then
         fdisk ${disk}
 fi
 
-printf "Specify boot partition (press enter for default /dev/sda1) > "
+printf "Specify boot partition. (press enter for default ${bootpar} > "
 bootpar=$(update)
 
-printf "Specify swap partition (press enter for default /dev/sda2) > "
+printf "Specify swap partition. (press enter for default ${swappar} > "
 swappar=$(update)
+echo ${swappar}
 
-printf "Specify root partition (press enter for default /dev/sda3) > "
+printf "Specify root partition. (press enter for default ${rootpar}) > "
 rootpar=$(update)
 
-printf "Specify default mirror to be used, please use most geographically close mirror. A full list of mirrors can be found at https://www.gentoo.org/downloads/mirrors/. (press enter for default https://mirrors.rit.edu/gentoo) > "
+printf "Specify default mirror to be used, please use most geographically close mirror. A full list of mirrors can be found at https://www.gentoo.org/downloads/mirrors/. (press enter for default ${gentoomirror}) > "
 gentoomirror=$(update)
 
-printf "Specify the number of parallel make jobs. More info can be found at https://wiki.gentoo.org/wiki/MAKEOPTS. (press enter for default -j8) > "
+printf "Specify the number of parallel make jobs. More info can be found at https://wiki.gentoo.org/wiki/MAKEOPTS. (press enter for default ${mkopts}) > "
 mkopts=$(update)
 
 printf "Change the global USE flags for the system. It is suggested to go with defaults. More info can be found https://wiki.gentoo.org/wiki/USE_flag. (press enter for defaults \"X elogind gmp gtk opengl pulseaudio python sound svg video vulkan -console-kit -systemd\") > "
