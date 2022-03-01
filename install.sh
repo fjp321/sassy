@@ -220,3 +220,5 @@ then
                 chroot /mnt/gentoo ./install2.sh
         fi
 fi
+
+# add reboot support
