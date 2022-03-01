@@ -24,6 +24,7 @@ wifi_flag=0
 fdisk_flag=0
 amd_flag=0
 nvidia_flag=0
+intel_flag=0
 gui_flag=0
 
 # read prompt function
@@ -43,8 +44,9 @@ usage() {
         printf "Options:\n"
         printf " -w, will run with wifi support\n"
         printf " -d, will run fdisk on specified drive in config.sh\n"
-        printf " -a, will use USE flags for amd gpu, mutually exclusive with --nvidia\n"
-        printf " -n, will use USE flags for nvidia gpu, mutually exclusive with --amd\n"
+        printf " -a, will use USE flags for amd gpu, mutually exclusive with other gpus\n"
+        printf " -n, will use USE flags for nvidia gpu, mutually exclusive with other gpus\n"
+        printf " -i, will use USE flags for intel gpu, mutually exclusive with other gpus\n"
         printf " -g, will include installation of openbox and lightdm\n"
 #       not included yet
 #       printf " -k|--kernel, specify genkernel config file, otherwise will run genkernel all\n"
@@ -71,6 +73,9 @@ while getopts "dwang" options; do
                 n)
                         nvidia_flag=1
                         ;;
+                i)
+                        intel_flag=1
+                        ;;
                 g)
                         gui_flag=1
                         ;;
@@ -80,16 +85,18 @@ while getopts "dwang" options; do
         esac
 done
 
-if [ $amd_flag = 1 ] && [ $nvidia_flag = 0 ]
+if [ $amd_flag = 1 ] && [ $nvidia_flag = 0 ] && [ $intel_flag = 0 ] 
 then
         video_card="amdgpu radeonsi"
-elif [ $amd_flag = 0 ] && [ $nvidia_flag = 1 ]
+fi
+if [ $amd_flag = 0 ] && [ $nvidia_flag = 1 ] && [ $intel_flag = 0 ] 
 then
         video_cards="nvidia nouveau"
-else
-        exit_abnormal
 fi
-
+if [ $amd_flag = 0 ] && [ $nvidia_flag = 0 ] && [ $intel_flag = 1 ] 
+then
+        video_cards="intel"
+fi
 # specify device
 printf "Specify device to write to (press enter for default /dev/sda) > "
 disk=$(update ${disk})
