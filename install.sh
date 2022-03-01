@@ -114,7 +114,7 @@ printf "Specify the number of parallel make jobs. More info can be found at http
 mkopts=$(update ${mkopts})
 
 printf "Change the global USE flags for the system. It is suggested to go with defaults. More info can be found https://wiki.gentoo.org/wiki/USE_flag. (press enter for defaults \"${useflags_var}\") > "
-useflags_var=$(update ${useflags_vars)
+useflags_var=$(update ${useflags_vars})
 
 printf "Specify the video card flags to use. More information can be found at https://wiki.gentoo.org/wiki/Xorg/Guide#Make.conf. (press enter for default ${video_cards}) > "
 video_cards=$(update ${video_cards})
