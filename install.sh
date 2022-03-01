@@ -241,3 +241,7 @@ fi
 rm -rf /mnt/gentoo/stage3* /mnt/gentoo/install2.sh /mnt/gentoo/config.sh
 
 # add reboot support
+read -p press any key to reboot
+umount -l /mnt/gentoo/dev{/shm,/pts,}
+umount -R /mnt/gentoo
+reboot
