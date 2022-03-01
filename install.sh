@@ -48,7 +48,6 @@ usage() {
         printf " -a, will use USE flags for amd gpu, mutually exclusive with other gpus\n"
         printf " -n, will use USE flags for nvidia gpu, mutually exclusive with other gpus\n"
         printf " -i, will use USE flags for intel gpu, mutually exclusive with other gpus\n"
-        printf " -g, will include installation of openbox and lightdm\n"
         printf " -f, will go fast and skip user input, ignores gpu flags\n"
 #       not included yet
 #       printf " -k|--kernel, specify genkernel config file, otherwise will run genkernel all\n"
@@ -77,9 +76,6 @@ while getopts "dwang" options; do
                         ;;
                 i)
                         intel_flag=1
-                        ;;
-                g)
-                        gui_flag=1
                         ;;
                 f)
                         fast_flag=1
@@ -223,19 +219,7 @@ chmod 777 config.sh
 #should run next part
 if [ wifi_arg = 1 ] 
 then
-        if [ gui_arg = 1 ]
-        then
-                chroot /mnt/gentoo ./install2.sh -wg
-        else
-                chroot /mnt/gentoo ./install2.sh -w
-        fi
-else
-        if [ gui_arg = 1 ]
-        then
-                chroot /mnt/gentoo ./install2.sh -g
-        else
-                chroot /mnt/gentoo ./install2.sh
-        fi
+        chroot /mnt/gentoo ./install2.sh -w
 fi
 
 rm -rf /mnt/gentoo/stage3* /mnt/gentoo/install2.sh /mnt/gentoo/config.sh
