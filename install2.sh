@@ -67,7 +67,7 @@ echo -e "${swappar}\tnone\tswap\tsw\t0 0" >> /etc/fstab
 echo -e "${rootpar}\t/\text4\trw,noatime\t0 1" >> /etc/fstab
 
 #networking portion
-if [ wifi_flag = 1 ]
+if [ $wifi_flag = 1 ]
 then 
 	network
 fi
@@ -94,7 +94,7 @@ passwd
 
 useradd --create-home --groups tty,users,wheel,portage,lp,adm,audio,cdrom,disk,usb,video,cron --shell /bin/bash --comment "${main_user}" ${main_user}
 
-if [ gui_flag = 1 ]
+if [ $gui_flag = 1 ]
 then
 	emerge -qv --autounmask-write=y --autounmask-continue=y x11-base/xorg-server x11-drivers/xf86-input-evdev firefox neofetch x11-terms/st calcurse feh dev-python/pip libreoffice app-editors/vim neomutt app-eselect/eselect-repository lightdm openbox
 fi
