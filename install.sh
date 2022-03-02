@@ -221,16 +221,16 @@ cp ~/config.sh ./config.sh
 chmod 777 install2.sh
 chmod 777 config.sh
 #should run next part
-if [ wifi_arg = 1 ] 
+if [ $wifi_arg = 1 ] 
 then
-        if [ gui_flag = 1 ]
+        if [ $gui_flag = 1 ]
         then
                 chroot /mnt/gentoo ./install2.sh -wg      
         else
                 chroot /mnt/gentoo ./install2.sh -w
         fi
 else
-        if [ gui_flag = 1 ]
+        if [ $gui_flag = 1 ]
         then
                 chroot /mnt/gentoo ./install2.sh -g
         else
