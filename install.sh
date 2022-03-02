@@ -90,7 +90,7 @@ while getopts "dwafng" options; do
 done
 
 
-if [ fast_flag = 0 ] 
+if [ $fast_flag = 0 ] 
 then
         if [ $amd_flag = 1 ] && [ $nvidia_flag = 0 ] && [ $intel_flag = 0 ] 
         then
