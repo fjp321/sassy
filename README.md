@@ -8,7 +8,7 @@
 ---
 ## What Is It?
 
-Sassy bash script is a installation script written in bash to automate the three stages of installation of gentoo. It automates the initial mounting of a drive, it downloads and unzips the stage three tar ball onto the drive. It then syncs portage, and downloads initial packages using the portage package manager. Ut adds a user, adds various programs for the user, such as a cron daemon, system logger, and optionally openbox and lightdm. Finally, the script umounts the drive installed to, cleans up the installation files, and poweroffs. This allows the user to unplug the usb used to install and reboot into the Gentoo OS.
+Sassy bash script is a installation script written in bash to automate the three stages of installation of gentoo. It automates the initial mounting of a drive, it downloads and unzips the stage three tar ball onto the drive. It then syncs portage, and downloads initial packages using the portage package manager. It adds a user, adds various programs for the user, such as a cron daemon, system logger, and optionally openbox and lightdm. Finally, the script umounts the drive installed to, cleans up the installation files, and poweroffs. This allows the user to unplug the usb used to install and reboot into the Gentoo OS.
 
 ## Usage
 
