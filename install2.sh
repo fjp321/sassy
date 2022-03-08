@@ -82,6 +82,7 @@ emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sysklogd net-m
 rc-update add dhcpcd default
 rc-update add sysklogd default
 rc-update add dcron default
+crontab /etc/crontab
 
 # set up grub
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
@@ -90,10 +91,11 @@ grub-install --target=x86_64-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 
 #set root passwd
-echo THIS IS ROOT PASSWD
+echo "THIS IS ROOT PASSWD"
 passwd
 
 useradd --create-home --groups tty,users,wheel,portage,lp,adm,audio,cdrom,disk,usb,video,cron --shell /bin/bash --comment "${main_user}" ${main_user}
+echo "THIS IS ${main_user} PASSWD"
 passwd ${main_user}
 
 if [ $gui_flag = 1 ]
