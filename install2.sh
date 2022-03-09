@@ -76,7 +76,7 @@ fi
 sed -i 's/hostname="localhost"/hostname="/${hostname}"/' /etc/conf.d/hostname
 
 #emerge system logger, cron daemon, mlocate for file indexing, fs tools, dhcpd to get internet and ip assignment, lynx, git, gentoolkit
-emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sysklogd net-misc/dhcpcd sys-process/dcron sys-apps/mlocate sys-fs/e2fsprogs sys-fs/dosftools dev-vcs/git lynx gentoolkit
+emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sysklogd net-misc/dhcpcd sys-process/dcron sys-apps/mlocate sys-fs/e2fsprogs sys-fs/dosfstools dev-vcs/git lynx gentoolkit
 
 #add tools to rc
 rc-update add dhcpcd default
