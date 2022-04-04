@@ -70,6 +70,10 @@ At the end of this script, the computer will unmount the drive you installed to 
 
 In this installation, I made multiple decisions that I think best benefit the greatest multitude of end users. If you have any disagreements, please fork this repository and make the changes you deem necessary for the benefit of others who may feel similarly. 
 
+### Calamares
+
+In this installation, I found it easiest to install trhough bash scripting, since it allows for the most minimal environemnt. 
+
 ### UEFI
 
 I decided to only add support for UEFI systems because I have never encountered a non UEFI system in the wild. 
