@@ -216,7 +216,7 @@ mount --bind /run /mnt/gentoo/run
 mount --make-slave /mnt/gentoo/run 
 
 #download next scripts into /mnt/gentoo/
-wget https://raw.github.com/fjp321/fuzzy-goggles/main/install2.sh
+wget https://raw.github.com/fjp321/fuzzy-goggles/main/src/install2.sh
 cp ~/config.sh ./config.sh
 chmod 777 install2.sh
 chmod 777 config.sh
