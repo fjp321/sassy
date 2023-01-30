@@ -9,9 +9,9 @@ swappar="/dev/sda2"
 rootpar="/dev/sda3"
 gentoomirror="https://mirrors.rit.edu/gentoo"
 mkopts="-j4"
-useflags_var="X elogind gmp gtk opengl pulseaudio python sound svg video vulkan -console-kit -systemd"
+useflags_var="X systemd gmp gtk opengl pulseaudio python sound svg video vulkan -openrc -elogind"
 video_cards="virtualbox"
-wifi_dev="wlp1s0"
+wifi_dev="wlan0"
 wifi_ssid="node"
 wifi_pass="secret"
 hostname="computer"
@@ -184,10 +184,10 @@ mount ${rootpar} /mnt/gentoo
 cd /mnt/gentoo
 
 #download read and store (into stage3location) where the latest stage 3 tarball for openrc is
-wget ${gentoomirror}/releases/amd64/autobuilds/latest-stage3-amd64-openrc.txt
-IFS=' ' read -r stage3location z <<< $(tail -n +3 latest-stage3-amd64-openrc.txt)
+wget ${gentoomirror}/releases/amd64/autobuilds/latest-stage3-amd64-systemd.txt
+IFS=' ' read -r stage3location z <<< $(tail -n +3 latest-stage3-amd64-systemd.txt)
 IFS='/' read -r z stage3tarball <<< $stage3location
-rm latest-stage3-amd64-openrc.txt
+rm latest-stage3-amd64-systemd.txt
 wget ${gentoomirror}/releases/amd64/autobuilds/$stage3location
 
 #unzip tar ball
