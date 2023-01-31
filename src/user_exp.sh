@@ -68,6 +68,8 @@ sudo emerge -qv --autounmask-write=y --autounmask-continue=y net-irc/irssi
 sudo emerge -qv --autounmask-write=y --autounmask-continue=y app-misc/ranger
 # get firefox
 sudo emerge -qv --autounmask-write=y --autounmask-continue=y www-client/firefox
+# get better network manager configuration
+# sudo emerge -qv --autounmask-write=y --autounmask-continue=y  
 # get breeze xcursor
 cd ~/git
 git clone https://github.com/TheScrawl/xcursor-breeze-neutral.git
