@@ -3,6 +3,7 @@ mkdir .config
 mkdir .config/qtile
 mkdir .config/kitty
 mkdir git
+mkdir -p .icons/default
 mkdir -p .local/share/fonts
 mkdir -p .local/share/icons
 # getting the fira code font
@@ -74,4 +75,4 @@ sudo emerge -qv --autounmask-write=y --autounmask-continue=y www-client/firefox
 cd ~/git
 git clone https://github.com/TheScrawl/xcursor-breeze-neutral.git
 cd
-cp -r git/xcursor-breeze-neutral .local/share/icons
+echo -e "[icon theme]\nInherits=xcursor-breeze-neutral" > ~/.icons/default/index.theme
