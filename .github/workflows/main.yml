@@ -1,0 +1,14 @@
+on:
+  push:
+    branches:
+    - main
+jobs:
+  job1:
+    runs_on: gentoo/stage3
+    name: check install2
+    steps:
+      - name: checkout
+      uses: fjp321/checkout@v2
+      - name: run install2.sh
+      uses: ./
+      runs: bash install2.sh    
