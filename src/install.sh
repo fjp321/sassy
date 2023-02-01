@@ -108,7 +108,7 @@ fi
 if [ $fast_flag = 0 ] 
 then
         # specify device
-        printf "Specify device to write to (press enter for default /dev/sda) > "
+        printf "Specify device to write to (press enter for default ${disk}) > "
         disk=$(update ${disk})
         
         if [ fdisk_flag = 1 ]
@@ -136,18 +136,6 @@ then
 
         printf "Specify the video card flags to use. More information can be found at https://wiki.gentoo.org/wiki/Xorg/Guide#Make.conf. (press enter for default ${video_cards}) > "
         video_cards=$(update ${video_cards})
-
-        if [ wifi_flag = 1 ]
-        then
-                printf "Specify the wifi device that is to be used. If you are unsure, please exit this script and run ifconfig. (press enter for default ${wifi_dev}) > "
-                wifi_dev=$(update ${wifi_dev})
-        
-                printf "Specify wifi SSID. (press enter for default ${wifi_ssid}) > "
-                wifi_ssid=$(update ${wifi_ssid})
-        
-                printf "Specify wifi password. (press enter for default ${wifi_pass}) > "
-                wifi_pass=$(update ${wifi_pass})
-        fi
 
         printf "Specify hostname. (press enter for default ${hostname}) > "
         hostname=$(update ${hostname})
