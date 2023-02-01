@@ -14,27 +14,12 @@ network () {
 	systemctl enable NetworkManager
 }
 
-# command line arg flags
-wifi_flag=0
-gui_flag=0
-
-while getopts "gw" options; do
-        case "${options}" in
-                w)
-                        wifi_flag=1
-                        ;;
-		g)
-			gui_flag=1
-			;;
-        esac
-done
-
 echo "mount to boot"
 mount ${bootpar} /boot
 echo "update bins"
 emerge-webrsync
 echo "set profile to desktop"
-eselect profile set 5
+eselect profile set 11
 
 echo "fix circ deps"
 USE="-harfbuzz" emerge --autounmask-write=y --autounmask-continue=y --oneshot media-libs/freetype
@@ -44,6 +29,7 @@ emerge -qv --update --deep --changed-use --autounmask-write=y --autounmask-conti
 echo "adds system boot flag to systemd and reinstalls systemd"
 mkdir -p /etc/portage/package.use
 echo "sys-app/systemd gnuefi" >> /etc/portage/package.use/systemd
+emerge -qv -qv --autounmask-write=y --autounmask-continue=y sys-kernel/installkernel-systemd-boot
 
 echo "set accept license to all"
 echo -e ACCEPT_LICENSE=\"*\" >> /etc/portage/make.conf
@@ -55,7 +41,7 @@ echo "set locale"
 echo en_US ISO-8859-1 >> /etc/locale.gen
 echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 locale-gen
-eselect locale set 6
+eselect locale set 5
 env-update && source /etc/profile
 
 echo "genkernel all need to add custom kernel support"
@@ -82,11 +68,15 @@ hostnamectl hostname ${hostname}
 echo "emerge system logger, cron daemon, mlocate for file indexing, fs tools, dhcpd to get internet and ip assignment, lynx, git, gentoolkit"
 emerge -qv --autounmask-write=y --autounmask-continue=y app-admin/sysklogd net-misc/dhcpcd sys-process/dcron sys-apps/mlocate sys-fs/e2fsprogs sys-fs/dosfstools dev-vcs/git lynx gentoolkit sys-apps/iproute2
 
-ech "add tools to systemd"
+echo "add tools to systemd"
 systemctl enable --now dhcpcd
 systemctl enable --now sysklogd 
 systemctl enable --now dcron 
 crontab /etc/crontab
+
+echo "set up systemd"
+emerge -qv --autounmask-write=y --autounmask-continue=y sys-kernel/installkernel-systemd-boot
+systemctl preset-all --preset-mode=enable-only
 
 echo "set up systemd-boot"
 bootctl install
