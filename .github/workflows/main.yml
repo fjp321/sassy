@@ -4,11 +4,11 @@ on:
     - main
 jobs:
   job1:
-    runs_on: gentoo/stage3
-    name: check install2
+    runs_on:ubuntu-latest
+    name:check install2
     steps:
       - name: checkout
-      uses: fjp321/test-docker-action@v2
+        uses: fjp321/test-docker-action@v2
       - name: run install2.sh
-      uses: ./
-      runs: bash install2.sh    
+        uses: ./
+        runs: bash install2.sh    
