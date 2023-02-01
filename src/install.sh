@@ -25,7 +25,6 @@ fdisk_flag=0
 amd_flag=0
 nvidia_flag=0
 intel_flag=0
-gui_flag=0
 fast_flag=0
 
 # read prompt function
@@ -167,33 +166,35 @@ echo -e "wifi_dev=\"${wifi_dev}\"" >> config.sh
 echo -e "wifi_ssid=\"${wif_ssid}\"" >> config.sh
 echo -e "wifi_pass=\"${wifi_pass}\"" >> config.sh
 echo -e "main_user=\"${main_user}\"" >> config.sh
+echo -e "wifi_flag=${wifi_flag}" >> config.sh
 
-#make filesystems and swap
+echo "make filesystems and swap"
 mkfs.fat -F 32 ${bootpar}
 mkfs.ext4 ${rootpar}
 mkswap ${swappar}
 swapon ${swappar}
 
-#mount root
-# change time
-ntpd -q -g
-
+echo "mount root"
 mount ${rootpar} /mnt/gentoo
 
-#change directory into mounted gentoo
+echo "change time"
+ntpd -q -g
+
+echo "change directory into mounted gentoo"
 cd /mnt/gentoo
 
-#download read and store (into stage3location) where the latest stage 3 tarball for openrc is
+echo "download read and store (into stage3location) where the latest stage 3 tarball for systemd is"
 wget ${gentoomirror}/releases/amd64/autobuilds/latest-stage3-amd64-systemd.txt
 IFS=' ' read -r stage3location z <<< $(tail -n +3 latest-stage3-amd64-systemd.txt)
 IFS='/' read -r z stage3tarball <<< $stage3location
 rm latest-stage3-amd64-systemd.txt
+echo "get gentoo mirror tar ball"
 wget ${gentoomirror}/releases/amd64/autobuilds/$stage3location
 
-#unzip tar ball
+echo "unzip tar ball"
 tar xpvf $stage3tarball --xattrs-include='*.*' --numeric-owner
 
-#add options to make conf file
+echo "add options to make conf file"
 sed -i 's/COMMON_FLAGS="-O2 -pipe"/COMMON_FLAGS="-O2 -pipe -march=native"/' etc/portage/make.conf
 echo -e "\n#MAKEOPTS\nMAKEOPTS=\"${mkopts}\"" >> etc/portage/make.conf
 echo -e "\n#default mirror for gentoo\nGENTOO_MIRRORS=\"${gentoomirror}\"" >> etc/portage/make.conf
@@ -201,12 +202,12 @@ echo -e "\n#video card options for amdgpu\nVIDEO_CARDS=\"${video_cards}\"" >> et
 echo -e "\n#input device for x\nINPUT_DEVICES=\"libinput synaptics\"" >> etc/portage/make.conf
 echo -e "\n#global use flags\nUSE=\"${useflags_var}\"" >> etc/portage/make.conf
 
-#add repos conf to portage
+echo "add repos conf to portage"
 mkdir --parents /mnt/gentoo/etc/portage/repos.conf
 cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
 
-#mount necessary file systems
+echo "mount necessary file systems"
 mount --types proc /proc /mnt/gentoo/proc
 mount --rbind /sys /mnt/gentoo/sys
 mount --make-rslave /mnt/gentoo/sys
@@ -215,33 +216,18 @@ mount --make-rslave /mnt/gentoo/dev
 mount --bind /run /mnt/gentoo/run
 mount --make-slave /mnt/gentoo/run 
 
-#download next scripts into /mnt/gentoo/
+echo "download next scripts into /mnt/gentoo/"
 wget https://raw.github.com/fjp321/fuzzy-goggles/main/src/install2.sh
 cp ~/config.sh ./config.sh
 chmod 777 install2.sh
 chmod 777 config.sh
-#should run next part
-if [ $wifi_arg = 1 ] 
-then
-        if [ $gui_flag = 1 ]
-        then
-                chroot /mnt/gentoo ./install2.sh -wg      
-        else
-                chroot /mnt/gentoo ./install2.sh -w
-        fi
-else
-        if [ $gui_flag = 1 ]
-        then
-                chroot /mnt/gentoo ./install2.sh -g
-        else
-                chroot /mnt/gentoo ./install2.sh
-        fi        
-fi
 
+echo "should run next part"
+chroot /mnt/gentoo ./install2.sh -wg      
 
 rm -rf /mnt/gentoo/stage3* /mnt/gentoo/install2.sh /mnt/gentoo/config.sh
 
-# add reboot support
+echo "add reboot support"
 read -p "press any key to reboot"
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -R /mnt/gentoo
