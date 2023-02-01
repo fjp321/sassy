@@ -118,3 +118,4 @@ Network manager is the selected wifi and network manager. This is because Eduroa
 - [video_cards variable](https://wiki.gentoo.org/wiki//etc/portage/make.conf#VIDEO_CARDS)
 - [gentoo_mirror](https://wiki.gentoo.org/wiki/GENTOO_MIRRORS)
 - [wifi_dev and wpa_supplicant](https://wiki.gentoo.org/wiki/Wpa_supplicant)
+- [Xorg](https://wiki.gentoo.org/wiki/Xorg/Guide)
