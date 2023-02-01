@@ -1,11 +1,11 @@
 name: run-tests
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
     RunAllTests:
       runs-on: ubuntu-latest
-      container: gentoo/stage3
+      container: gentoo-stage3:latest
       steps:
         - uses: actions/checkout@v2
         - name: run-tests
