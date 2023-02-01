@@ -1,0 +1,6 @@
+# action.yml
+name: 'Run Install2'
+description: 'Runs install2.sh file.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
