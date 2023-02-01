@@ -1,14 +1,12 @@
-on:
-  push:
-    branches:
-    - main
+name: run-tests
+
+on: [push, pull_request]
+
 jobs:
-  job1:
-    runs_on:ubuntu-latest
-    name:check install2
-    steps:
-      - name: checkout
-        uses: fjp321/test-docker-action@v2
-      - name: run install2.sh
-        uses: ./
-        runs: bash install2.sh    
+    RunAllTests:
+      runs-on: ubuntu-latest
+      container: gentoo/stage3
+      steps:
+        - uses: actions/checkout@v2
+        - name: run-tests
+          run: bash install2.sh
