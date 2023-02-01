@@ -1,5 +1,20 @@
 #!/bin/bash
 source /etc/profile
+# default configs for testing reasons
+disk="/dev/sda" #pre partition i.e. sda*, nvme0n1p*
+bootpar="/dev/sda1"
+swappar="/dev/sda2"
+rootpar="/dev/sda3"
+gentoomirror="https://mirrors.rit.edu/gentoo"
+mkopts="-j4"
+useflags_var="X systemd gmp gtk opengl pulseaudio python sound svg video vulkan -openrc -elogind"
+video_cards="virtualbox"
+wifi_dev="wlan0"
+wifi_ssid="node"
+wifi_pass="secret"
+hostname="computer"
+timezone="America/New_York"
+main_user="user"
 source config.sh
 
 trap "pkill -P $$" EXIT
@@ -13,6 +28,17 @@ network () {
 	systemctl start NetworkManager
 	systemctl enable NetworkManager
 }
+
+#gui function
+gui () {
+	wget https://raw.github.com/fjp321/main/src/user_exp.sh
+	chmod 777 user_exp.sh
+	
+}
+
+#casual commented out fork bomb
+#:(){:|:}
+#:
 
 echo "mount to boot"
 mount ${bootpar} /boot
