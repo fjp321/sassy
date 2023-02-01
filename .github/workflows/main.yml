@@ -3,10 +3,10 @@ name: run-tests
 on: [push]
 
 jobs:
-    RunAllTests:
-      runs-on: ubuntu-latest
-      container: gentoo-stage3:latest
-      steps:
-        - uses: actions/checkout@v2
-        - name: run-tests
-          run: bash install2.sh
+    JobOne:
+        runs-on: ubuntu-latest
+        container: gentoo/stage3:latest
+        steps:
+            -   uses: actions/checkout@v2
+            -   name: run-tests
+                run: bash src/install2.sh
