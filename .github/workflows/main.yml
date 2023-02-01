@@ -8,7 +8,7 @@ jobs:
     name: check install2
     steps:
       - name: checkout
-      uses: fjp321/checkout@v2
+      uses: fjp321/test-docker-action@v2
       - name: run install2.sh
       uses: ./
       runs: bash install2.sh    
