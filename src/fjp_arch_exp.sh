@@ -13,9 +13,11 @@ mkdir -p .local/share/fonts
 mkdir -p .local/share/icons
 # get yay
 cd git
-
+git clone https://gtihub.com/Jguer/yay.git
+cd yay
+sudo make install
 # getting the fira code font
-cd .local/share/fonts
+cd ~/.local/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip
 unzip FiraCode.zip
 fc-cache
@@ -34,16 +36,15 @@ wget -p ~/.config/qtile https://raw.github.com/fjp321/dotfiles/main/.config/qtil
 wget -p ~/.config/qtile https://raw.github.com/fjp321/dotfiles/main/.config/qtile/wallpaper.png
 # get kitty config
 wget -p ~/.config/kitty https://raw.github.com/fjp321/dotfiles/main/.config/kitty/kitty.conf
+# get bashrc
+wget -p ~/ https://raw.github.com/fjp321/dotfiles/main/.bashrc
 # get vimrc
 wget -p ~/ https://raw.github.com/fjp321/dotfiles/main/.vimrc
 # configure lightdm and lightdm mini greeter
 systemctl enable lightdm
 systemctl start lightdm
-# get bashrc
-wget -p ~/ https://raw.github.com/fjp321/dotfiles/main/.bashrc
 # enable picom
 sudo systemctl enable picom
 sudo systemctl start picom
 # touch envrc
 touch ~/.envrc
-
