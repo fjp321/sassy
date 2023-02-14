@@ -1,4 +1,3 @@
-
 # get packages:
 # fjp needs: qtile, kitty, dunst, rofi, lightdm + lightdm mini greeter, picom, irssi, ranger, calcurse, vim, task, moc
 # other needs: gnome. gnome-extra
