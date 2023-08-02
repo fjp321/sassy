@@ -39,12 +39,13 @@ partition(){
                 BOOT_PAR="${DISK}p1"
         fi
         echo "Partitioning $DISK with partitions $BOOT_PAR, $ROOT_PAR using parted"
-        parted /dev/$DISK mklabel gpt mkpart "EFI system partition" fat32 1MiB 513MiB set 1 esp on mkpart "home partition" ext4 513MiB 100%
+        parted /dev/$DISK mklabel gpt 
+        parted /dev/$DISK mkpart "BOOT" fat32 1MiB 513MiB set 1 esp on mkpart "ROOT" ext4 513MiB 100%
 }
 
 # make fs on partitions
 make_file_system () {
-        mkfs.fat -F 32 -L boot /dev/$BOOT_PAR
+        mkfs.fat -F 32 -n boot /dev/$BOOT_PAR
         mkfs.ext4 -L root /dev/$ROOT_PAR
 }
 
