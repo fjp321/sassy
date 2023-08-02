@@ -8,9 +8,8 @@ main(){
         make_file_system
         echo "mount root ..."
         mkdir /mnt/build
-        mount $ROOT_PAR /mnt/build
+        mount /dev/$ROOT_PAR /mnt/build
         cd /mnt/build
-        install_select_distro
 }
 
 # select the disk
@@ -20,7 +19,7 @@ select_disk(){
         while [ $DISK -eq '']; do
                 ACCEPTED_DISKS=$(lsblk -o NAME)
                 echo $ACCEPTED_DISKS
-                read -p 'select disk to repartition' DISK_TEMP
+                read -p 'select disk to repartition: ' DISK_TEMP
                 if [[ $ACCEPTED_DISKS == *"$DISK_TEMP"* ]]; then
                         DISK=$DISK_TEMP
                 fi
@@ -45,8 +44,8 @@ partition(){
 
 # make fs on partitions
 make_file_system () {
-        mkfs.fat -F 32 $BOOT_PAR
-        mkfs.ext4 $ROOT_PAR
+        mkfs.fat -F 32 /dev/$BOOT_PAR
+        mkfs.ext4 /dev/$ROOT_PAR
 }
 
 main
