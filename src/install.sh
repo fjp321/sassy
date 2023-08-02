@@ -19,7 +19,7 @@ select_disk(){
         while [ $DISK -eq '']; do
                 ACCEPTED_DISKS=$(lsblk -o NAME)
                 echo $ACCEPTED_DISKS
-                read 'select disk to repartition' DISK_TEMP
+                read -p 'select disk to repartition' DISK_TEMP
                 if [[ $ACCEPTED_DISKS == *"$DISK_TEMP"* ]]; then
                         DISK=$DISK_TEMP
                 fi
