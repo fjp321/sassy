@@ -4,16 +4,12 @@ trap "pkill -P $$" EXIT
 main(){
         echo "partition disks ..."
         partition
-        
         echo "make filesystems ..."
         makefilesys
-        
         echo "mount root ..."
         mount ${ROOT_PAR} /mnt/build
-        
         echo "change time ..."
         ntpd -q -g
-        
 }
 
 # partition selected disk, will return the partitioned disk
