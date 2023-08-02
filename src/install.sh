@@ -8,7 +8,7 @@ main(){
         make_file_system
         echo "mount root ..."
         mkdir /mnt/build
-        mount /dev/$ROOT_PAR /mnt/build
+        mount /dev/disk/by-label/root /mnt/build
         cd /mnt/build
 }
 
@@ -44,8 +44,8 @@ partition(){
 
 # make fs on partitions
 make_file_system () {
-        mkfs.fat -F 32 /dev/$BOOT_PAR
-        mkfs.ext4 /dev/$ROOT_PAR
+        mkfs.fat -F 32 -L boot /dev/$BOOT_PAR
+        mkfs.ext4 -L root /dev/$ROOT_PAR
 }
 
 main
