@@ -8,4 +8,7 @@
 ---
 ## What Is It?
 
-This page is under construction
+Sassy is an automated shell script for partitioning a linux machine for:
+- UEFI boot
+- ZRAM
+- No separate home partition
