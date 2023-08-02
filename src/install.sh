@@ -14,10 +14,10 @@ main(){
 
 # select the disk
 select_disk(){
-        DISK_TEMP = ''
-        DISK = ''
+        DISK_TEMP=''
+        DISK=''
         while [ $DISK -eq '']; do
-                ACCEPTED_DISKS = $(lsblk -o NAME)
+                ACCEPTED_DISKS=$(lsblk -o NAME)
                 echo $ACCEPTED_DISKS
                 read 'select disk to repartition' DISK_TEMP
                 if [[ $ACCEPTED_DISKS == *"$DISK_TEMP"* ]]; then
@@ -29,14 +29,14 @@ select_disk(){
 # partition selected disk, will return the partitioned disk
 partition(){
         select_disk
-        ROOT_PAR = ''
-        BOOT_PAR = ''
+        ROOT_PAR=''
+        BOOT_PAR=''
         if [[ $DISK == *"sda"* ]]; then
-                ROOT_PAR = "${DISK}2"
-                BOOT_PAR = "${DISK}1"
+                ROOT_PAR="${DISK}2"
+                BOOT_PAR="${DISK}1"
         else
-                ROOT_PAR = "${DISK}p2"
-                BOOT_PAR = "${DISK}p1"
+                ROOT_PAR="${DISK}p2"
+                BOOT_PAR="${DISK}p1"
         fi
         echo "Partitioning $DISK with partitions $BOOT_PAR, $ROOT_PAR using parted"
         parted /dev/$DISK mklabel gpt mkpart "EFI system partition" fat32 1MiB 513MiB set 1 esp on mkpart "home partition" ext4 513MiB 100%
