@@ -7,9 +7,9 @@ main(){
         echo "make filesystems ..."
         make_file_system
         echo "mount root ..."
-        mkdir -p /mnt/build
-        mount /dev/disk/by-label/root /mnt/build
-        cd /mnt/build
+        mkdir -p /mnt
+        mount /dev/disk/by-label/root /mnt
+        cd /mnt
 }
 
 # select the disk
