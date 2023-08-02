@@ -7,6 +7,7 @@ main(){
         echo "make filesystems ..."
         make_file_system
         echo "mount root ..."
+        mkdir /mnt/build
         mount $ROOT_PAR /mnt/build
         echo "change time ..."
         ntpd -q -g
@@ -43,7 +44,7 @@ partition(){
 }
 
 # make fs on partitions
-makefilesys () {
+make_file_system () {
         mkfs.fat -F 32 $BOOT_PAR
         mkfs.ext4 $ROOT_PAR
 }
