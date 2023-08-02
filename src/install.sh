@@ -39,7 +39,7 @@ partition(){
                 BOOT_PAR="${DISK}p1"
         fi
         echo "Partitioning $DISK with partitions $BOOT_PAR, $ROOT_PAR using parted"
-        parted /dev/$DISK mklabel gpt 
+        parted /dev/$DISK mklabel gpt
         parted /dev/$DISK mkpart "BOOT" fat32 1MiB 513MiB set 1 esp on mkpart "ROOT" ext4 513MiB 100%
 }
 
