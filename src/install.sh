@@ -51,8 +51,5 @@ makefilesys () {
         mkfs.fat -F 32 ${BOOT_PAR}
         mkfs.ext4 ${ROOT_PAR}
 }
-if [ $# -eq 0 ] then
-    echo "No arguments supplied, needs disk to partition and target distribution to install"
-fi
 
 main
