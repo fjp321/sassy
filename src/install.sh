@@ -9,8 +9,8 @@ main(){
         echo "mount root ..."
         mkdir /mnt/build
         mount $ROOT_PAR /mnt/build
-        echo "change time ..."
-        ntpd -q -g
+        cd /mnt/build
+        install_select_distro
 }
 
 # select the disk
