@@ -7,7 +7,7 @@ main(){
         echo "make filesystems ..."
         make_file_system
         echo "mount root ..."
-        mount ${ROOT_PAR} /mnt/build
+        mount $ROOT_PAR /mnt/build
         echo "change time ..."
         ntpd -q -g
 }
@@ -17,10 +17,10 @@ select_disk(){
         DISK_TEMP = ''
         DISK = ''
         while [ $DISK -eq '']; do
-                ACCEPTED_DISKS = "$(lsblk -o NAME)"
+                ACCEPTED_DISKS = $(lsblk -o NAME)
                 echo $ACCEPTED_DISKS
                 read 'select disk to repartition' DISK_TEMP
-                if [[ $ACCEPTED_DISKS == *"${DISK_TEMP}"* ]]; then
+                if [[ $ACCEPTED_DISKS == *"$DISK_TEMP"* ]]; then
                         DISK=$DISK_TEMP
                 fi
         done
@@ -38,14 +38,14 @@ partition(){
                 ROOT_PAR = "${DISK}p2"
                 BOOT_PAR = "${DISK}p1"
         fi
-        echo "Partitioning ${DISK} with partitions $BOOT_PAR, $ROOT_PAR using parted"
+        echo "Partitioning $DISK with partitions $BOOT_PAR, $ROOT_PAR using parted"
         parted /dev/$DISK mklabel gpt mkpart "EFI system partition" fat32 1MiB 513MiB set 1 esp on mkpart "home partition" ext4 513MiB 100%
 }
 
 # make fs on partitions
 makefilesys () {
-        mkfs.fat -F 32 ${BOOT_PAR}
-        mkfs.ext4 ${ROOT_PAR}
+        mkfs.fat -F 32 $BOOT_PAR
+        mkfs.ext4 $ROOT_PAR
 }
 
 main
