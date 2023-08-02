@@ -34,7 +34,7 @@ partition(){
         if [[ $DISK == *"sda"* ]]; then
                 ROOT_PAR = "${DISK}2"
                 BOOT_PAR = "${DISK}1"
-        else 
+        else
                 ROOT_PAR = "${DISK}p2"
                 BOOT_PAR = "${DISK}p1"
         fi
